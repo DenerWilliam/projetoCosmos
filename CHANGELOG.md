@@ -10,6 +10,13 @@
   destino em vez de "teletransportar"
 - Halo de clique sincronizado com a chegada da seta ao ponto alvo
 
+### Fixed
+
+- Seta do cursor ficava invisível nas gravações: a visibilidade era controlada por
+  `element.style.opacity`, que retorna `''` (não `'0'`) para estilos vindos da
+  `<style>`, mantendo o `opacity: 0` do CSS. Agora é usada uma flag `shown` no loop de
+  renderização.
+
 ### Changed
 
 - Tamanho do cursor aumentado de 24px para 52px para nitidez nos GIFs reduzidos

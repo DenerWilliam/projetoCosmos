@@ -57,6 +57,7 @@ CURSOR_OVERLAY_JS = """
         let tx = cx, ty = cy;
         let pendingHalo = null;
         let rafId;
+        let shown = false;
 
         const triggerHalo = (x, y) => {
             halo.style.transition = 'transform .25s ease-out, opacity .3s ease-out';
@@ -72,7 +73,8 @@ CURSOR_OVERLAY_JS = """
         const render = () => {
             const dx = tx - cx, dy = ty - cy;
             const dist = Math.hypot(dx, dy);
-            if (cursor.style.opacity === '0' && (dist > 0.5 || pendingHalo)) {
+            if (!shown && (dist > 0.5 || pendingHalo)) {
+                shown = true;
                 cursor.style.opacity = 1;
             }
             if (dist > 0.5) {
