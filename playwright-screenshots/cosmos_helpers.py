@@ -55,10 +55,19 @@ CURSOR_OVERLAY_JS = """
         document.documentElement.appendChild(halo);
 
         let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
+        const saved = sessionStorage.getItem('__cosmosPos');
+        if (saved && saved !== 'undefined') {
+            try {
+                const p = JSON.parse(saved);
+                if (typeof p.x === 'number' && typeof p.y === 'number') {
+                    cx = p.x; cy = p.y;
+                }
+            } catch (e) {}
+        }
         let tx = cx, ty = cy;
+        window.__cosmosPos = { x: cx, y: cy };
         let rafId;
         let shown = false;
-        window.__cosmosPos = { x: cx, y: cy };
 
         const triggerHalo = (x, y) => {
             halo.style.transition = 'transform .25s ease-out, opacity .3s ease-out';
@@ -83,6 +92,8 @@ CURSOR_OVERLAY_JS = """
                 cy += dy * EASE;
                 cursor.style.transform = `translate(${cx - TIP_X}px, ${cy - TIP_Y}px)`;
             }
+            window.__cosmosPos = { x: cx, y: cy };
+            try { sessionStorage.setItem('__cosmosPos', JSON.stringify({ x: cx, y: cy })); } catch (e) {}
             rafId = requestAnimationFrame(render);
         };
 
@@ -254,8 +265,12 @@ async def navigate_to(page, url):
 
 
 async def _get_cursor_pos(page):
-    pos = await page.evaluate("() => window.__cosmosPos ? { ...window.__cosmosPos } : null")
-    return (pos["x"], pos["y"]) if pos else (900, 500)
+    pos = await page.evaluate(
+        "() => window.__cosmosPos ? { ...window.__cosmosPos } : null"
+    )
+    if pos and pos.get("x") is not None:
+        return (pos["x"], pos["y"])
+    return await page.evaluate("() => [window.innerWidth / 2, window.innerHeight / 2]")
 
 
 async def smooth_click(page, locator, steps=40, settle=0.35):
