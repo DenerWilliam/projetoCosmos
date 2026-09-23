@@ -14,6 +14,7 @@ from cosmos_helpers import (
     dismiss_error,
     get_logged_in_context,
     navigate_to,
+    smooth_click,
 )
 from playwright.async_api import async_playwright
 
@@ -58,7 +59,7 @@ async def create_demo_contact(page):
     await asyncio.sleep(3)
     contacts_link = page.locator('a:has-text("Contacts"), span:has-text("Contacts")')
     if await contacts_link.count() > 0:
-        await contacts_link.first.click()
+        await smooth_click(page, contacts_link.first)
         await asyncio.sleep(5)
     await page.screenshot(
         path=str(OUTPUT_DIR / "01_contatos_lista.png"), full_page=True
@@ -66,11 +67,11 @@ async def create_demo_contact(page):
 
     print("  Clicando NOVO...")
     novo_btn = page.locator('button:has-text("NOVO"), button:has-text("New")')
-    await novo_btn.first.click()
+    await smooth_click(page, novo_btn.first)
     await asyncio.sleep(5)
 
     print("  Selecionando Individual...")
-    await page.locator('input[type="radio"]').first.click()
+    await smooth_click(page, page.locator('input[type="radio"]').first)
     await asyncio.sleep(1)
 
     print("  Preenchendo nome...")
@@ -104,7 +105,7 @@ async def create_demo_contact(page):
         '.o_form_button_save, button:has-text("Salvar"), button:has-text("Save")'
     )
     if await save_btn.count() > 0:
-        await save_btn.first.click()
+        await smooth_click(page, save_btn.first)
     else:
         await page.keyboard.press("Control+s")
     await asyncio.sleep(5)
@@ -117,7 +118,7 @@ async def delete_contact_flow(page):
     await asyncio.sleep(3)
     contacts_link = page.locator('a:has-text("Contacts"), span:has-text("Contacts")')
     if await contacts_link.count() > 0:
-        await contacts_link.first.click()
+        await smooth_click(page, contacts_link.first)
         await asyncio.sleep(5)
 
     print("  Buscando pelo nome...")
@@ -125,7 +126,7 @@ async def delete_contact_flow(page):
         '.o_searchview_input, input[placeholder*="Pesquisar"], input[placeholder*="Search"]'
     ).first
     if await search.count() > 0:
-        await search.click()
+        await smooth_click(page, search)
         await search.fill(DEMO_NAME)
         await page.keyboard.press("Enter")
         await asyncio.sleep(5)
@@ -136,7 +137,7 @@ async def delete_contact_flow(page):
         f'.o_kanban_record:has-text("{DEMO_NAME}"), .o_data_row:has-text("{DEMO_NAME}"), tr:has-text("{DEMO_NAME}")'
     ).first
     if await contact_row.count() > 0:
-        await contact_row.click()
+        await smooth_click(page, contact_row)
         await asyncio.sleep(5)
     await page.screenshot(
         path=str(OUTPUT_DIR / "05_form_contato_aberto.png"), full_page=True
@@ -145,7 +146,7 @@ async def delete_contact_flow(page):
     print("  Abrindo menu de acoes do registro...")
     actions_btn = page.locator(".fa-cog")
     if await actions_btn.count() > 0:
-        await actions_btn.first.click()
+        await smooth_click(page, actions_btn.first)
         await asyncio.sleep(2)
     await page.screenshot(path=str(OUTPUT_DIR / "06_menu_acoes.png"), full_page=True)
 
@@ -158,7 +159,7 @@ async def delete_contact_flow(page):
         '.dropdown-item:has-text("Delete")'
     ).first
     if await delete_item.count() > 0:
-        await delete_item.click()
+        await smooth_click(page, delete_item)
         await asyncio.sleep(3)
     else:
         print("    WARNING: item Excluir nao encontrado")
@@ -176,7 +177,7 @@ async def delete_contact_flow(page):
         '.modal-footer button:has-text("OK")'
     ).first
     if await confirm_btn.count() > 0:
-        await confirm_btn.click()
+        await smooth_click(page, confirm_btn)
         await asyncio.sleep(5)
     else:
         await page.keyboard.press("Enter")
@@ -188,7 +189,7 @@ async def delete_contact_flow(page):
     await asyncio.sleep(3)
     contacts_link = page.locator('a:has-text("Contacts"), span:has-text("Contacts")')
     if await contacts_link.count() > 0:
-        await contacts_link.first.click()
+        await smooth_click(page, contacts_link.first)
         await asyncio.sleep(5)
     await page.screenshot(
         path=str(OUTPUT_DIR / "08_contato_excluido.png"), full_page=True

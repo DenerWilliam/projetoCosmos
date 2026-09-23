@@ -9,6 +9,10 @@
 - Suporte a interpolação (lerp) no movimento do cursor: a seta desliza suavemente até o
   destino em vez de "teletransportar"
 - Halo de clique sincronizado com a chegada da seta ao ponto alvo
+- Helper `smooth_click` em `cosmos_helpers.py`: move o mouse do Playwright de forma
+  interpolada até o alvo (mousemove reais progressivos), pausa, e só então dispara
+  `mouse.down/up` — nas gravações a seta chega ao destino **antes** do clique,
+  eliminando o efeito "clique primeiro, seta depois"
 
 ### Fixed
 
@@ -16,10 +20,9 @@
   `element.style.opacity`, que retorna `''` (não `'0'`) para estilos vindos da
   `<style>`, mantendo o `opacity: 0` do CSS. Agora é usada uma flag `shown` no loop de
   renderização.
-- Seta chegava ao destino depois do clique no vídeo: o lerp lento atrasava a chegada em
-  relação ao `mousedown` instantâneo do Playwright. Hover ainda desliza suavemente; no
-  `mousedown` a seta snap para o ponto do clique e o halo dispara no mesmo instante,
-  sincronizando seta e ação.
+- Seta se movia depois/saltava no clique: `click()` do Playwright é instantâneo.
+  Substituído nos tutoriais por `smooth_click`, que interpola o movimento com
+  `page.mouse.move` e aguarda a chegada antes de clicar.
 
 ### Changed
 

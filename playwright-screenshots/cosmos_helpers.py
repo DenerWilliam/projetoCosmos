@@ -57,6 +57,7 @@ CURSOR_OVERLAY_JS = """
         let tx = cx, ty = cy;
         let rafId;
         let shown = false;
+        window.__cosmosPos = { x: cx, y: cy };
 
         const triggerHalo = (x, y) => {
             halo.style.transition = 'transform .25s ease-out, opacity .3s ease-out';
@@ -249,6 +250,43 @@ async def navigate_to(page, url):
     await page.goto(url, wait_until="domcontentloaded")
     await asyncio.sleep(5)
     await dismiss_error(page)
+
+
+async def _get_cursor_pos(page):
+    pos = await page.evaluate("() => window.__cosmosPos ? { ...window.__cosmosPos } : null")
+    return (pos["x"], pos["y"]) if pos else (900, 500)
+
+
+async def smooth_click(page, locator, steps=40, settle=0.35):
+    """
+    Move the mouse smoothly to the locator target on screen and only then
+    performs the click (mouse.down/up), so recordings show the cursor arriving
+    before the action instead of after it.
+    """
+    loc = locator.first if not hasattr(locator, "__len__") else locator
+    box = await loc.bounding_box()
+    if not box:
+        await loc.scroll_into_view_if_needed()
+        box = await loc.bounding_box()
+    target = (box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+
+    sx, sy = await _get_cursor_pos(page)
+    ex, ey = target
+    dist = ((ex - sx) ** 2 + (ey - sy) ** 2) ** 0.5
+    n = max(15, min(steps, int(dist / 8)))
+
+    for i in range(1, n + 1):
+        t = i / n
+        ease = 1 - (1 - t) ** 3
+        px = sx + (ex - sx) * ease
+        py = sy + (ey - sy) * ease
+        await page.mouse.move(px, py)
+        await asyncio.sleep(0.025)
+    await page.mouse.move(ex, ey)
+    await asyncio.sleep(settle)
+    await page.mouse.down()
+    await asyncio.sleep(0.05)
+    await page.mouse.up()
 
 
 # Need this for the json import in get_logged_in_context
