@@ -9,7 +9,9 @@ from cosmos_helpers import (
     ODOO_URL,
     convert_all_videos,
     get_logged_in_context,
+    human_type,
     navigate_to,
+    smooth_click,
 )
 from playwright.async_api import async_playwright
 
@@ -32,7 +34,7 @@ async def create_lead_flow(page, lead):
 
     # Click NOVO to open quick-add form
     print("  Clicando NOVO...")
-    await page.click('button:has-text("NOVO"), button:has-text("New")')
+    await smooth_click(page, page.locator('button:has-text("NOVO"), button:has-text("New")'))
     await asyncio.sleep(3)
 
     # Fill organization
@@ -43,8 +45,7 @@ async def create_lead_flow(page, lead):
     if await org_input.count() == 0:
         org_input = page.locator('.o_form_nosheet div[name="partner_id"] input').first
     if await org_input.count() > 0:
-        await org_input.click()
-        await org_input.fill(lead["partner"])
+        await human_type(page, org_input, lead["partner"])
         await asyncio.sleep(2)
         await page.keyboard.press("Enter")
         await asyncio.sleep(2)
@@ -57,9 +58,7 @@ async def create_lead_flow(page, lead):
     if await opp_input.count() == 0:
         opp_input = page.locator('.o_form_nosheet input[placeholder*="exemplo"]').first
     if await opp_input.count() > 0:
-        await opp_input.click()
-        await opp_input.fill("")
-        await opp_input.fill(lead["opportunity"])
+        await human_type(page, opp_input, lead["opportunity"], clear=True)
         await asyncio.sleep(1)
 
     await page.screenshot(path=str(OUTPUT_DIR / "02_form_quick.png"), full_page=True)
@@ -68,7 +67,7 @@ async def create_lead_flow(page, lead):
     print("  Clicando EDITAR para formulario completo...")
     editar_btn = page.locator('button:has-text("EDITAR")').first
     if await editar_btn.count() > 0:
-        await editar_btn.click()
+        await smooth_click(page, editar_btn)
         await asyncio.sleep(5)
     await page.screenshot(path=str(OUTPUT_DIR / "03_form_full.png"), full_page=True)
 
@@ -76,16 +75,14 @@ async def create_lead_flow(page, lead):
     print("  Preenchendo email...")
     email_input = page.locator('.o_form_view input[type="email"]').first
     if await email_input.count() > 0:
-        await email_input.click()
-        await email_input.fill(lead["email"])
+        await human_type(page, email_input, lead["email"])
         await asyncio.sleep(1)
 
     # Fill phone
     print("  Preenchendo telefone...")
     phone_input = page.locator('.o_form_view input[type="tel"]').first
     if await phone_input.count() > 0:
-        await phone_input.click()
-        await phone_input.fill(lead["phone"])
+        await human_type(page, phone_input, lead["phone"])
         await asyncio.sleep(1)
 
     # Fill expected revenue
@@ -101,13 +98,7 @@ async def create_lead_flow(page, lead):
         revenue_input = page.locator('.o_form_view input[type="text"]').nth(1)
 
     if await revenue_input.count() > 0:
-        await revenue_input.click()
-        await asyncio.sleep(0.3)
-        await revenue_input.click(click_count=3)
-        await asyncio.sleep(0.3)
-        await page.keyboard.press("Backspace")
-        await asyncio.sleep(0.3)
-        await page.keyboard.type(lead["revenue"], delay=50)
+        await human_type(page, revenue_input, lead["revenue"], clear=True)
         await asyncio.sleep(0.5)
         await page.keyboard.press("Tab")
         await asyncio.sleep(1)
@@ -127,7 +118,7 @@ async def create_lead_flow(page, lead):
     await asyncio.sleep(3)
     pipeline = page.locator('a:has-text("Pipeline")')
     if await pipeline.count() > 0:
-        await pipeline.first.click()
+        await smooth_click(page, pipeline.first)
         await asyncio.sleep(5)
     await page.screenshot(
         path=str(OUTPUT_DIR / "06_pipeline_with_lead.png"), full_page=True

@@ -4,6 +4,7 @@ Shared helpers for Cosmos Advisors tutorial scripts.
 Provides a logged-in browser context using saved session state.
 """
 import asyncio
+import random
 import subprocess
 from pathlib import Path
 
@@ -262,8 +263,12 @@ async def smooth_click(page, locator, steps=40, settle=0.35):
     Move the mouse smoothly to the locator target on screen and only then
     performs the click (mouse.down/up), so recordings show the cursor arriving
     before the action instead of after it.
+
+    Movement uses Ease-In-Out (slow start, accelerate, slow end) with a small
+    random delay between steps to mimic human mouse motion instead of a linear
+    robotic sweep.
     """
-    loc = locator.first if not hasattr(locator, "__len__") else locator
+    loc = locator.first
     box = await loc.bounding_box()
     if not box:
         await loc.scroll_into_view_if_needed()
@@ -277,16 +282,53 @@ async def smooth_click(page, locator, steps=40, settle=0.35):
 
     for i in range(1, n + 1):
         t = i / n
-        ease = 1 - (1 - t) ** 3
+        # Ease-In-Out Quad (starts slow, accelerates, decelerates)
+        ease = 2 * t * t if t < 0.5 else 1 - pow(-2 * t + 2, 2) / 2
         px = sx + (ex - sx) * ease
         py = sy + (ey - sy) * ease
         await page.mouse.move(px, py)
-        await asyncio.sleep(0.025)
+        await asyncio.sleep(random.uniform(0.01, 0.02))
     await page.mouse.move(ex, ey)
     await asyncio.sleep(settle)
     await page.mouse.down()
     await asyncio.sleep(0.05)
     await page.mouse.up()
+
+
+async def human_type(page, locator, text, delay=120, clear=False):
+    """
+    Focus the field with a smooth cursor move and type text one character at a
+    time with a human-like per-key delay (instead of .fill(), which is instant).
+    """
+    loc = locator.first
+    box = await loc.bounding_box()
+    if not box:
+        await loc.scroll_into_view_if_needed()
+        box = await loc.bounding_box()
+    target = (box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+
+    sx, sy = await _get_cursor_pos(page)
+    ex, ey = target
+    dist = ((ex - sx) ** 2 + (ey - sy) ** 2) ** 0.5
+    n = max(15, min(40, int(dist / 8)))
+
+    for i in range(1, n + 1):
+        t = i / n
+        ease = 2 * t * t if t < 0.5 else 1 - pow(-2 * t + 2, 2) / 2
+        px = sx + (ex - sx) * ease
+        py = sy + (ey - sy) * ease
+        await page.mouse.move(px, py)
+        await asyncio.sleep(random.uniform(0.01, 0.02))
+    await page.mouse.move(ex, ey)
+    await asyncio.sleep(0.25)
+    await page.mouse.down()
+    await asyncio.sleep(0.05)
+    await page.mouse.up()
+
+    if clear:
+        await page.keyboard.press("Control+a")
+        await page.keyboard.press("Delete")
+    await page.keyboard.type(text, delay=delay)
 
 
 # Need this for the json import in get_logged_in_context

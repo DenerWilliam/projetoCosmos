@@ -9,7 +9,9 @@ from cosmos_helpers import (
     ODOO_URL,
     convert_all_videos,
     get_logged_in_context,
+    human_type,
     navigate_to,
+    smooth_click,
 )
 from playwright.async_api import async_playwright
 
@@ -28,7 +30,7 @@ async def create_ticket_flow(page, ticket):
 
     tickets_link = page.locator('a:has-text("Tickets"), span:has-text("Tickets")')
     if await tickets_link.count() > 0:
-        await tickets_link.first.click()
+        await smooth_click(page, tickets_link.first)
         await asyncio.sleep(5)
     else:
         await navigate_to(
@@ -43,7 +45,7 @@ async def create_ticket_flow(page, ticket):
         'button:has-text("NOVO"), button:has-text("New"), a:has-text("NOVO")'
     )
     if await novo_btn.count() > 0:
-        await novo_btn.first.click()
+        await smooth_click(page, novo_btn.first)
         await asyncio.sleep(5)
     await page.screenshot(path=str(OUTPUT_DIR / "02_ticket_form.png"), full_page=True)
 
@@ -51,8 +53,7 @@ async def create_ticket_flow(page, ticket):
     print("  Preenchendo assunto...")
     name_input = page.locator('input[name="name"]')
     if await name_input.count() > 0:
-        await name_input.first.click()
-        await name_input.first.fill(ticket["subject"])
+        await human_type(page, name_input.first, ticket["subject"])
     else:
         title_area = page.locator('.o_field_widget[name="name"]')
         if await title_area.count() > 0:
@@ -65,8 +66,7 @@ async def create_ticket_flow(page, ticket):
     print("  Preenchendo contato...")
     partner_input = page.locator('input[name="partner_id"]')
     if await partner_input.count() > 0:
-        await partner_input.first.click()
-        await partner_input.first.fill(ticket["customer"])
+        await human_type(page, partner_input.first, ticket["customer"])
         await asyncio.sleep(2)
         await page.keyboard.press("Enter")
         await asyncio.sleep(2)
@@ -77,13 +77,12 @@ async def create_ticket_flow(page, ticket):
         'a:has-text("Descricao"), a:has-text("Description"), a:has-text("Descrição")'
     )
     if await desc_tab.count() > 0:
-        await desc_tab.first.click()
+        await smooth_click(page, desc_tab.first)
         await asyncio.sleep(2)
 
     desc_textarea = page.locator('textarea[name="description"]')
     if await desc_textarea.count() > 0:
-        await desc_textarea.first.click()
-        await desc_textarea.first.fill(ticket["description"])
+        await human_type(page, desc_textarea.first, ticket["description"], clear=True)
     else:
         desc_div = page.locator('.o_field_html[name="description"]')
         if await desc_div.count() > 0:
@@ -108,7 +107,7 @@ async def create_ticket_flow(page, ticket):
     await asyncio.sleep(3)
     tickets = page.locator('a:has-text("Tickets")')
     if await tickets.count() > 0:
-        await tickets.first.click()
+        await smooth_click(page, tickets.first)
         await asyncio.sleep(5)
     await page.screenshot(
         path=str(OUTPUT_DIR / "05_tickets_with_new.png"), full_page=True

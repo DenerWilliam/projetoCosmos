@@ -10,6 +10,7 @@ from cosmos_helpers import (
     convert_all_videos,
     get_logged_in_context,
     navigate_to,
+    smooth_click,
 )
 from playwright.async_api import async_playwright
 
@@ -36,7 +37,7 @@ async def main():
         await asyncio.sleep(3)
         pipeline = page.locator('a:has-text("Pipeline")')
         if await pipeline.count() > 0:
-            await pipeline.first.click()
+            await smooth_click(page, pipeline.first)
             await asyncio.sleep(5)
         await page.screenshot(
             path=str(OUTPUT_DIR / "02_crm_pipeline.png"), full_page=True
@@ -50,7 +51,7 @@ async def main():
         await asyncio.sleep(3)
         projects = page.locator('a:has-text("Projects")')
         if await projects.count() > 0:
-            await projects.first.click()
+            await smooth_click(page, projects.first)
             await asyncio.sleep(5)
         await page.screenshot(path=str(OUTPUT_DIR / "04_projects.png"), full_page=True)
 
@@ -62,7 +63,7 @@ async def main():
         await asyncio.sleep(3)
         invoices = page.locator('a:has-text("Invoices"), span:has-text("Invoices")')
         if await invoices.count() > 0:
-            await invoices.first.click()
+            await smooth_click(page, invoices.first)
             await asyncio.sleep(5)
         await page.screenshot(
             path=str(OUTPUT_DIR / "05_accounting.png"), full_page=True
@@ -76,7 +77,7 @@ async def main():
         await asyncio.sleep(3)
         tickets = page.locator('a:has-text("Tickets")')
         if await tickets.count() > 0:
-            await tickets.first.click()
+            await smooth_click(page, tickets.first)
             await asyncio.sleep(5)
         await page.screenshot(path=str(OUTPUT_DIR / "06_helpdesk.png"), full_page=True)
 

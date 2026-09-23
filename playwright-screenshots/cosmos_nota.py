@@ -9,7 +9,9 @@ from cosmos_helpers import (
     ODOO_URL,
     convert_all_videos,
     get_logged_in_context,
+    human_type,
     navigate_to,
+    smooth_click,
 )
 from playwright.async_api import async_playwright
 
@@ -32,21 +34,20 @@ async def create_invoice_flow(page, invoice):
     await asyncio.sleep(3)
     invoices = page.locator('a:has-text("Invoices"), span:has-text("Invoices")')
     if await invoices.count() > 0:
-        await invoices.first.click()
+        await smooth_click(page, invoices.first)
         await asyncio.sleep(5)
     await page.screenshot(path=str(OUTPUT_DIR / "01_faturas_lista.png"), full_page=True)
 
     print("  Clicando NOVO...")
     novo_btn = page.locator('button:has-text("NOVO"), button:has-text("New")')
-    await novo_btn.first.click()
+    await smooth_click(page, novo_btn.first)
     await asyncio.sleep(5)
 
     print("  Preenchendo cliente...")
     partner_input = page.locator(
         'div[name="partner_id"] input, input[placeholder*="Cliente"], input[placeholder*="Customer"]'
     ).first
-    await partner_input.click()
-    await partner_input.fill(invoice["partner"])
+    await human_type(page, partner_input, invoice["partner"])
     await asyncio.sleep(2)
     await page.keyboard.press("Enter")
     await asyncio.sleep(2)
@@ -56,9 +57,7 @@ async def create_invoice_flow(page, invoice):
         'input[name="invoice_date"], input[placeholder*="Data"]'
     ).first
     if await date_input.count() > 0:
-        await date_input.click()
-        await date_input.fill("")
-        await date_input.fill(invoice["invoice_date"])
+        await human_type(page, date_input, invoice["invoice_date"], clear=True)
         await asyncio.sleep(1)
         await page.keyboard.press("Tab")
         await asyncio.sleep(1)
@@ -68,8 +67,7 @@ async def create_invoice_flow(page, invoice):
         'input[name="ref"], input[placeholder*="Referencia"]'
     ).first
     if await ref_input.count() > 0:
-        await ref_input.click()
-        await ref_input.fill(invoice["ref"])
+        await human_type(page, ref_input, invoice["ref"])
         await asyncio.sleep(1)
 
     await asyncio.sleep(2)
@@ -82,17 +80,15 @@ async def create_invoice_flow(page, invoice):
             'a:has-text("Adicionar uma linha"), button:has-text("Adicionar uma linha")'
         )
         if await add_line_btn.count() > 0:
-            await add_line_btn.first.click()
+            await smooth_click(page, add_line_btn.first)
             await asyncio.sleep(3)
 
         name_td = page.locator('td[name="name"]')
         if await name_td.count() > 0:
             last_name = name_td.last
-            await last_name.click()
-            await asyncio.sleep(0.5)
             name_input = last_name.locator("input")
             if await name_input.count() > 0:
-                await name_input.fill(line["name"])
+                await human_type(page, name_input, line["name"])
             else:
                 await page.keyboard.type(line["name"], delay=10)
             await asyncio.sleep(0.5)
@@ -102,12 +98,9 @@ async def create_invoice_flow(page, invoice):
         qty_td = page.locator('td[name="quantity"]')
         if await qty_td.count() > 0:
             last_qty = qty_td.last
-            await last_qty.click()
-            await asyncio.sleep(0.5)
             qty_input = last_qty.locator("input")
             if await qty_input.count() > 0:
-                await qty_input.fill("")
-                await qty_input.fill(line["qty"])
+                await human_type(page, qty_input, line["qty"], clear=True)
             else:
                 await page.keyboard.press("Control+a")
                 await page.keyboard.type(line["qty"], delay=10)
@@ -118,12 +111,9 @@ async def create_invoice_flow(page, invoice):
         price_td = page.locator('td[name="price_unit"]')
         if await price_td.count() > 0:
             last_price = price_td.last
-            await last_price.click()
-            await asyncio.sleep(0.5)
             price_input = last_price.locator("input")
             if await price_input.count() > 0:
-                await price_input.fill("")
-                await price_input.fill(line["price"])
+                await human_type(page, price_input, line["price"], clear=True)
             else:
                 await page.keyboard.press("Control+a")
                 await page.keyboard.type(line["price"], delay=10)
@@ -144,7 +134,7 @@ async def create_invoice_flow(page, invoice):
         'button:has-text("Confirmar"), button:has-text("Confirm")'
     )
     if await confirm_btn.count() > 0:
-        await confirm_btn.first.click()
+        await smooth_click(page, confirm_btn.first)
         await asyncio.sleep(5)
     await page.screenshot(
         path=str(OUTPUT_DIR / "05_fatura_confirmada.png"), full_page=True
@@ -155,13 +145,13 @@ async def create_invoice_flow(page, invoice):
         'button:has-text("Registrar Pagamento"), button:has-text("Register Payment")'
     )
     if await register_btn.count() > 0:
-        await register_btn.first.click()
+        await smooth_click(page, register_btn.first)
         await asyncio.sleep(3)
         pay_btn = page.locator(
             'button:has-text("Criar Pagamento"), button:has-text("Create Payment")'
         )
         if await pay_btn.count() > 0:
-            await pay_btn.first.click()
+            await smooth_click(page, pay_btn.first)
             await asyncio.sleep(5)
     await page.screenshot(path=str(OUTPUT_DIR / "06_pagamento.png"), full_page=True)
 

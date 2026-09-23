@@ -13,6 +13,7 @@ from cosmos_helpers import (
     convert_all_videos,
     dismiss_error,
     get_logged_in_context,
+    human_type,
     navigate_to,
     smooth_click,
 )
@@ -75,27 +76,35 @@ async def create_demo_contact(page):
     await asyncio.sleep(1)
 
     print("  Preenchendo nome...")
-    await page.locator(
-        'input[placeholder*="Joao"], input[placeholder*="Jo"]'
-    ).first.fill(DEMO_CONTACT["name"])
+    await human_type(
+        page,
+        page.locator(
+            'input[placeholder*="Joao"], input[placeholder*="Jo"]'
+        ),
+        DEMO_CONTACT["name"],
+    )
     await asyncio.sleep(0.5)
 
     print("  Preenchendo cargo...")
-    await page.locator(
-        'input[placeholder*="Diretor"], input[placeholder*="Job"], input[placeholder*="Function"]'
-    ).first.fill(DEMO_CONTACT["function"])
+    await human_type(
+        page,
+        page.locator(
+            'input[placeholder*="Diretor"], input[placeholder*="Job"], input[placeholder*="Function"]'
+        ),
+        DEMO_CONTACT["function"],
+    )
     await asyncio.sleep(0.5)
 
     print("  Preenchendo telefone...")
     tel_inputs = page.locator('input[type="tel"]')
     if await tel_inputs.count() > 0:
-        await tel_inputs.first.fill(DEMO_CONTACT["phone"])
+        await human_type(page, tel_inputs.first, DEMO_CONTACT["phone"])
         await asyncio.sleep(0.5)
 
     print("  Preenchendo email...")
     email = page.locator('input[type="email"]').first
     if await email.count() > 0:
-        await email.fill(DEMO_CONTACT["email"])
+        await human_type(page, email, DEMO_CONTACT["email"])
         await asyncio.sleep(0.5)
 
     await page.screenshot(path=str(OUTPUT_DIR / "02_form_contato.png"), full_page=True)
@@ -126,8 +135,7 @@ async def delete_contact_flow(page):
         '.o_searchview_input, input[placeholder*="Pesquisar"], input[placeholder*="Search"]'
     ).first
     if await search.count() > 0:
-        await smooth_click(page, search)
-        await search.fill(DEMO_NAME)
+        await human_type(page, search, DEMO_NAME)
         await page.keyboard.press("Enter")
         await asyncio.sleep(5)
     await page.screenshot(path=str(OUTPUT_DIR / "04_busca_contato.png"), full_page=True)
