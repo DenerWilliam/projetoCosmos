@@ -19,7 +19,7 @@ CURSOR_OVERLAY_JS = """
     const SIZE = 52;
     const TIP_X = SIZE * (5 / 24);
     const TIP_Y = SIZE * (3 / 24);
-    const EASE = 0.15;
+    const EASE = 0.2;
 
     const mount = () => {
         if (!document.documentElement || !document.head) return false;
@@ -55,7 +55,6 @@ CURSOR_OVERLAY_JS = """
 
         let cx = window.innerWidth / 2, cy = window.innerHeight / 2;
         let tx = cx, ty = cy;
-        let pendingHalo = null;
         let rafId;
         let shown = false;
 
@@ -73,7 +72,7 @@ CURSOR_OVERLAY_JS = """
         const render = () => {
             const dx = tx - cx, dy = ty - cy;
             const dist = Math.hypot(dx, dy);
-            if (!shown && (dist > 0.5 || pendingHalo)) {
+            if (!shown && dist > 0.5) {
                 shown = true;
                 cursor.style.opacity = 1;
             }
@@ -81,12 +80,6 @@ CURSOR_OVERLAY_JS = """
                 cx += dx * EASE;
                 cy += dy * EASE;
                 cursor.style.transform = `translate(${cx - TIP_X}px, ${cy - TIP_Y}px)`;
-            } else if (pendingHalo) {
-                cx = tx; cy = ty;
-                cursor.style.transform = `translate(${cx - TIP_X}px, ${cy - TIP_Y}px)`;
-                const h = pendingHalo;
-                pendingHalo = null;
-                triggerHalo(h.x, h.y);
             }
             rafId = requestAnimationFrame(render);
         };
@@ -97,7 +90,14 @@ CURSOR_OVERLAY_JS = """
         }, { passive: true });
 
         document.addEventListener('mousedown', (e) => {
-            pendingHalo = { x: e.clientX, y: e.clientY };
+            if (!shown) {
+                shown = true;
+                cursor.style.opacity = 1;
+            }
+            cx = tx = e.clientX;
+            cy = ty = e.clientY;
+            cursor.style.transform = `translate(${cx - TIP_X}px, ${cy - TIP_Y}px)`;
+            triggerHalo(e.clientX, e.clientY);
         }, true);
 
         render();

@@ -16,6 +16,10 @@
   `element.style.opacity`, que retorna `''` (não `'0'`) para estilos vindos da
   `<style>`, mantendo o `opacity: 0` do CSS. Agora é usada uma flag `shown` no loop de
   renderização.
+- Seta chegava ao destino depois do clique no vídeo: o lerp lento atrasava a chegada em
+  relação ao `mousedown` instantâneo do Playwright. Hover ainda desliza suavemente; no
+  `mousedown` a seta snap para o ponto do clique e o halo dispara no mesmo instante,
+  sincronizando seta e ação.
 
 ### Changed
 
