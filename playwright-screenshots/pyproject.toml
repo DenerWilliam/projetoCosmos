@@ -1,0 +1,18 @@
+[project]
+name = "playwright-screenshots"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Dener William", email = "denerwilliam@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "playwright>=1.63.0",
+]
+
+[project.scripts]
+playwright-screenshots = "playwright_screenshots:main"
+
+[build-system]
+requires = ["uv_build>=0.12.10,<0.13.0"]
+build-backend = "uv_build"
