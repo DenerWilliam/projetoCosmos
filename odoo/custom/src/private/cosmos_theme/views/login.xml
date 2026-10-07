@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <!-- Logo na tela de login -->
+        <template id="login_logo" inherit_id="web.login" name="Cosmos Login Logo">
+            <xpath expr="//t[@t-call='web.login_layout']" position="before">
+                <div class="text-center mb-4">
+                    <img
+                        src="/cosmos_theme/static/description/logo.png"
+                        alt="Cosmos Advisors"
+                        style="max-width: 200px; height: auto;"
+                    />
+                </div>
+            </xpath>
+        </template>
+
+        <!-- CSS do login -->
+        <template id="login_css" inherit_id="web.layout" name="Cosmos Login CSS">
+            <xpath expr="//head" position="inside">
+                <style>
+                    body {
+                        background: linear-gradient(135deg, #0A1628 0%, #1E3A5F 100%) !important;
+                    }
+                    .oe_login_form .btn-primary {
+                        background-color: #E91E63 !important;
+                        border-color: #E91E63 !important;
+                    }
+                    .oe_login_form .btn-primary:hover {
+                        background-color: #C2185B !important;
+                        border-color: #C2185B !important;
+                    }
+                </style>
+            </xpath>
+        </template>
+    </data>
+</odoo>

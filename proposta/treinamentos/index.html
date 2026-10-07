@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Treinamentos Odoo | Cosmos Advisors</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --cosmos-dark: #0a1628;
+                --cosmos-blue: #1e3a5f;
+                --cosmos-accent: #e91e63;
+                --cosmos-light-blue: #42a5f5;
+                --cosmos-white: #ffffff;
+                --cosmos-gray: #f5f7fa;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Inter", sans-serif;
+                background: var(--cosmos-gray);
+                min-height: 100vh;
+            }
+
+            .header {
+                background: linear-gradient(
+                    135deg,
+                    var(--cosmos-dark) 0%,
+                    var(--cosmos-blue) 100%
+                );
+                color: var(--cosmos-white);
+                padding: 60px 20px;
+                text-align: center;
+            }
+
+            .header-logo {
+                font-size: 2rem;
+                font-weight: 300;
+                letter-spacing: 12px;
+                margin-bottom: 20px;
+            }
+
+            .header-title {
+                font-size: 2.5rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .header-subtitle {
+                font-size: 1.1rem;
+                opacity: 0.8;
+                font-weight: 300;
+            }
+
+            .container {
+                max-width: 1000px;
+                margin: 0 auto;
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                font-weight: 600;
+                color: var(--cosmos-dark);
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .modules-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+                margin-bottom: 50px;
+            }
+
+            .module-card {
+                background: var(--cosmos-white);
+                border-radius: 12px;
+                padding: 30px;
+                text-decoration: none;
+                color: inherit;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                border-bottom: 4px solid transparent;
+            }
+
+            .module-card:hover {
+                transform: translateY(-5px);
+                border-bottom-color: var(--cosmos-accent);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+            }
+
+            .module-icon {
+                width: 60px;
+                height: 60px;
+                background: linear-gradient(
+                    135deg,
+                    var(--cosmos-dark),
+                    var(--cosmos-blue)
+                );
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+            }
+
+            .module-name {
+                font-size: 1.2rem;
+                font-weight: 600;
+                color: var(--cosmos-dark);
+                margin-bottom: 10px;
+            }
+
+            .module-desc {
+                font-size: 0.95rem;
+                color: #666;
+                line-height: 1.5;
+            }
+
+            .module-badge {
+                display: inline-block;
+                background: rgba(233, 30, 99, 0.1);
+                color: var(--cosmos-accent);
+                padding: 4px 12px;
+                border-radius: 15px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                margin-top: 15px;
+            }
+
+            .back-link {
+                display: block;
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            .back-link a {
+                color: var(--cosmos-accent);
+                text-decoration: none;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+            .back-link a:hover {
+                text-decoration: underline;
+            }
+
+            .footer {
+                background: var(--cosmos-dark);
+                color: var(--cosmos-white);
+                padding: 30px 20px;
+                text-align: center;
+            }
+
+            .footer-text {
+                font-size: 0.9rem;
+                opacity: 0.7;
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <div class="header-logo">COSMOS</div>
+            <h1 class="header-title">Treinamentos Odoo</h1>
+            <p class="header-subtitle">Aprenda a usar cada módulo do sistema</p>
+        </header>
+
+        <main class="container">
+            <h2 class="section-title">Módulos Disponíveis</h2>
+
+            <div class="modules-grid">
+                <!-- CRM -->
+                <a href="01-crm-lead.html" class="module-card">
+                    <div class="module-icon">💼</div>
+                    <h3 class="module-name">CRM: Criar Lead</h3>
+                    <p class="module-desc">
+                        Aprenda a cadastrar oportunidades no pipeline de vendas e
+                        acompanhar o funil de vendas.
+                    </p>
+                    <span class="module-badge">15 min</span>
+                </a>
+
+                <!-- Helpdesk -->
+                <a href="02-helpdesk-ticket.html" class="module-card">
+                    <div class="module-icon">🎧</div>
+                    <h3 class="module-name">Helpdesk: Criar Ticket</h3>
+                    <p class="module-desc">
+                        Abra e gerencie chamados de suporte, acompanhe o status e
+                        resolva problemas.
+                    </p>
+                    <span class="module-badge">10 min</span>
+                </a>
+
+                <!-- Faturamento -->
+                <a href="03-faturamento.html" class="module-card">
+                    <div class="module-icon">💰</div>
+                    <h3 class="module-name">Faturamento: Emitir Nota</h3>
+                    <p class="module-desc">
+                        Crie faturas, adicione linhas de produto e registre pagamentos.
+                    </p>
+                    <span class="module-badge">20 min</span>
+                </a>
+
+                <!-- Contatos -->
+                <a href="04-contatos.html" class="module-card">
+                    <div class="module-icon">👥</div>
+                    <h3 class="module-name">Contatos: Cadastrar Cliente</h3>
+                    <p class="module-desc">
+                        Cadastre clientes, fornecedores e parceiros com dados completos.
+                    </p>
+                    <span class="module-badge">10 min</span>
+                </a>
+
+                <!-- Projetos -->
+                <a href="05-projetos.html" class="module-card">
+                    <div class="module-icon">📁</div>
+                    <h3 class="module-name">Projetos: Gestão de Entregas</h3>
+                    <p class="module-desc">
+                        Crie projetos, defina tarefas e acompanhe o progresso da equipe.
+                    </p>
+                    <span class="module-badge">15 min</span>
+                </a>
+            </div>
+
+            <div class="back-link">
+                <a href="../proposta-cosmos.html"
+                    >← Voltar ao Material de Apresentação</a
+                >
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p class="footer-text">
+                © 2026 Cosmos Advisors. Parceira Certificada Odoo.
+            </p>
+        </footer>
+    </body>
+</html>

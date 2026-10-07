@@ -1,0 +1,52 @@
+#!/bin/bash
+# Script to create symlinks for OCA Knowledge modules
+# Run this after container restart or gitaggregate
+
+set -e
+
+ADDONS_DIR="/opt/odoo/auto/addons"
+KNOWLEDGE_DIR="/opt/odoo/custom/src/oca/knowledge"
+HELPDESK_DIR="/opt/odoo/custom/src/oca/helpdesk"
+KNOWLEDGE_MARKDOWN_DIR="/opt/odoo/custom/src/oca/knowledge-markdown"
+
+echo "Creating Knowledge module symlinks..."
+cd "$ADDONS_DIR"
+
+# Knowledge modules
+for dir in "$KNOWLEDGE_DIR"/*/; do
+    name=$(basename "$dir")
+    if [ "$name" != "setup" ] && [ "$name" != ".git" ]; then
+        ln -sf "../../custom/src/oca/knowledge/$name" "$name"
+        echo "  Linked: $name"
+    fi
+done
+
+# Helpdesk modules
+echo "Creating Helpdesk module symlinks..."
+for dir in "$HELPDESK_DIR"/*/; do
+    name=$(basename "$dir")
+    if [ "$name" != "setup" ] && [ "$name" != ".git" ]; then
+        ln -sf "../../custom/src/oca/helpdesk/$name" "$name"
+        echo "  Linked: $name"
+    fi
+done
+
+# Knowledge-Markdown module
+echo "Creating Knowledge-Markdown module symlinks..."
+if [ -d "$KNOWLEDGE_MARKDOWN_DIR" ]; then
+    ln -sf "../../custom/src/oca/knowledge-markdown" "knowledge_markdown"
+    echo "  Linked: knowledge_markdown"
+fi
+
+# Private modules (cosmos_setup, cosmos_theme)
+PRIVATE_DIR="/opt/odoo/custom/src/private"
+echo "Creating Private module symlinks..."
+for dir in "$PRIVATE_DIR"/*/; do
+    name=$(basename "$dir")
+    if [ "$name" != ".git" ]; then
+        ln -sf "../../custom/src/private/$name" "$name"
+        echo "  Linked: $name"
+    fi
+done
+
+echo "Done!"

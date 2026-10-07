@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Material de Apresentação - Cosmos Advisors | Odoo ERP</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --cosmos-dark: #0a1628;
+                --cosmos-blue: #1e3a5f;
+                --cosmos-accent: #e91e63;
+                --cosmos-light-blue: #42a5f5;
+                --cosmos-white: #ffffff;
+                --cosmos-gray: #f5f7fa;
+                --cosmos-text: #333333;
+            }
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Inter", sans-serif;
+                color: var(--cosmos-text);
+                line-height: 1.6;
+                background: var(--cosmos-gray);
+            }
+
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 0 20px;
+            }
+
+            /* CAPA */
+            .cover {
+                min-height: 100vh;
+                background: linear-gradient(
+                    135deg,
+                    var(--cosmos-dark) 0%,
+                    var(--cosmos-blue) 100%
+                );
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                color: var(--cosmos-white);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .cover::before {
+                content: "";
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(
+                    circle,
+                    rgba(233, 30, 99, 0.1) 0%,
+                    transparent 50%
+                );
+                animation: pulse 8s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%,
+                100% {
+                    transform: scale(1);
+                    opacity: 0.5;
+                }
+                50% {
+                    transform: scale(1.1);
+                    opacity: 0.8;
+                }
+            }
+
+            .logo-container {
+                position: relative;
+                z-index: 1;
+                margin-bottom: 40px;
+            }
+
+            .logo-text {
+                font-size: 4rem;
+                font-weight: 300;
+                letter-spacing: 15px;
+                margin-bottom: 10px;
+            }
+
+            .logo-tagline {
+                font-size: 1rem;
+                font-weight: 300;
+                letter-spacing: 3px;
+                opacity: 0.8;
+            }
+
+            .cover-title {
+                position: relative;
+                z-index: 1;
+                font-size: 2.5rem;
+                font-weight: 600;
+                margin-top: 60px;
+                margin-bottom: 20px;
+            }
+
+            .cover-subtitle {
+                position: relative;
+                z-index: 1;
+                font-size: 1.2rem;
+                font-weight: 300;
+                opacity: 0.9;
+                max-width: 600px;
+            }
+
+            .cover-date {
+                position: absolute;
+                bottom: 40px;
+                font-size: 0.9rem;
+                opacity: 0.7;
+            }
+
+            /* SEÇÕES */
+            .section {
+                padding: 80px 0;
+            }
+
+            .section-dark {
+                background: var(--cosmos-dark);
+                color: var(--cosmos-white);
+            }
+
+            .section-white {
+                background: var(--cosmos-white);
+            }
+
+            .section-gray {
+                background: var(--cosmos-gray);
+            }
+
+            .section-header {
+                text-align: center;
+                margin-bottom: 60px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+                font-weight: 600;
+                color: var(--cosmos-dark);
+                margin-bottom: 15px;
+            }
+
+            .section-dark .section-title {
+                color: var(--cosmos-white);
+            }
+
+            .section-subtitle {
+                font-size: 1.1rem;
+                color: #666;
+                max-width: 700px;
+                margin: 0 auto;
+            }
+
+            .section-dark .section-subtitle {
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            .accent-line {
+                width: 80px;
+                height: 4px;
+                background: var(--cosmos-accent);
+                margin: 20px auto;
+            }
+
+            /* SOBRE A COSMOS */
+            .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+            }
+
+            .about-text p {
+                margin-bottom: 20px;
+                font-size: 1.05rem;
+            }
+
+            .about-stats {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .stat-card {
+                background: var(--cosmos-white);
+                padding: 30px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-top: 4px solid var(--cosmos-accent);
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+                font-weight: 700;
+                color: var(--cosmos-dark);
+            }
+
+            .stat-label {
+                font-size: 0.9rem;
+                color: #666;
+                margin-top: 5px;
+            }
+
+            /* DESAFIOS */
+            .challenges-list {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+
+            .challenge-card {
+                background: rgba(255, 255, 255, 0.05);
+                padding: 30px;
+                border-radius: 10px;
+                border-left: 4px solid var(--cosmos-accent);
+                transition: transform 0.3s ease;
+            }
+
+            .challenge-card:hover {
+                transform: translateX(10px);
+            }
+
+            .challenge-icon {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .challenge-title {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .challenge-desc {
+                font-size: 0.95rem;
+                opacity: 0.8;
+            }
+
+            /* MÓDULOS */
+            .modules-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .module-card {
+                background: var(--cosmos-white);
+                padding: 40px 30px;
+                border-radius: 10px;
+                text-align: center;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+                transition: all 0.3s ease;
+                border-bottom: 4px solid transparent;
+            }
+
+            .module-card:hover {
+                transform: translateY(-10px);
+                border-bottom-color: var(--cosmos-accent);
+            }
+
+            .module-icon {
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(
+                    135deg,
+                    var(--cosmos-dark),
+                    var(--cosmos-blue)
+                );
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 20px;
+                font-size: 2rem;
+            }
+
+            .module-name {
+                font-size: 1.3rem;
+                font-weight: 600;
+                color: var(--cosmos-dark);
+                margin-bottom: 15px;
+            }
+
+            .module-features {
+                list-style: none;
+                text-align: left;
+            }
+
+            .module-features li {
+                padding: 8px 0;
+                border-bottom: 1px solid #eee;
+                font-size: 0.9rem;
+            }
+
+            .module-features li:last-child {
+                border-bottom: none;
+            }
+
+            /* FLUXO */
+            .workflow-steps {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+                margin-top: 40px;
+            }
+
+            .workflow-steps::before {
+                content: "";
+                position: absolute;
+                top: 40px;
+                left: 10%;
+                right: 10%;
+                height: 3px;
+                background: var(--cosmos-accent);
+            }
+
+            .workflow-step {
+                text-align: center;
+                position: relative;
+                z-index: 1;
+                flex: 1;
+            }
+
+            .step-number {
+                width: 80px;
+                height: 80px;
+                background: var(--cosmos-accent);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 20px;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--cosmos-white);
+            }
+
+            .step-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+
+            .step-desc {
+                font-size: 0.9rem;
+                opacity: 0.8;
+                max-width: 150px;
+                margin: 0 auto;
+            }
+
+            /* CRONOGRAMA */
+            .timeline {
+                position: relative;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            .timeline::before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 4px;
+                height: 100%;
+                background: var(--cosmos-accent);
+            }
+
+            .timeline-item {
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 50%;
+                position: relative;
+                margin-bottom: 50px;
+            }
+
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-right: 0;
+                padding-left: 50%;
+            }
+
+            .timeline-content {
+                background: var(--cosmos-white);
+                padding: 25px;
+                border-radius: 10px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                max-width: 350px;
+                position: relative;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-right: 50px;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50px;
+            }
+
+            .timeline-dot {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 20px;
+                height: 20px;
+                background: var(--cosmos-accent);
+                border-radius: 50%;
+                border: 4px solid var(--cosmos-white);
+            }
+
+            .timeline-week {
+                font-size: 0.85rem;
+                color: var(--cosmos-accent);
+                font-weight: 600;
+                margin-bottom: 8px;
+            }
+
+            .timeline-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: var(--cosmos-dark);
+                margin-bottom: 8px;
+            }
+
+            .timeline-desc {
+                font-size: 0.9rem;
+                color: #666;
+            }
+
+            /* PRÓXIMOS PASSOS */
+            .next-steps-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+
+            .next-step-card {
+                background: rgba(255, 255, 255, 0.05);
+                padding: 40px 30px;
+                border-radius: 10px;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+
+            .next-step-card:hover {
+                background: rgba(255, 255, 255, 0.1);
+                transform: translateY(-5px);
+            }
+
+            .next-step-number {
+                font-size: 3rem;
+                font-weight: 700;
+                color: var(--cosmos-accent);
+                margin-bottom: 20px;
+            }
+
+            .next-step-title {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 15px;
+            }
+
+            .next-step-desc {
+                font-size: 0.95rem;
+                opacity: 0.8;
+            }
+
+            /* RODAPÉ */
+            .footer {
+                background: var(--cosmos-dark);
+                color: var(--cosmos-white);
+                padding: 60px 0 30px;
+                text-align: center;
+            }
+
+            .footer-logo {
+                font-size: 2rem;
+                font-weight: 300;
+                letter-spacing: 10px;
+                margin-bottom: 30px;
+            }
+
+            .footer-contact {
+                margin-bottom: 30px;
+            }
+
+            .footer-contact p {
+                margin: 8px 0;
+                opacity: 0.8;
+            }
+
+            .footer-divider {
+                width: 100px;
+                height: 2px;
+                background: var(--cosmos-accent);
+                margin: 30px auto;
+            }
+
+            .footer-copyright {
+                font-size: 0.9rem;
+                opacity: 0.6;
+            }
+
+            /* RESPONSIVO */
+            @media (max-width: 992px) {
+                .about-grid,
+                .challenges-list,
+                .modules-grid,
+                .next-steps-grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .workflow-steps {
+                    flex-direction: column;
+                    gap: 30px;
+                }
+
+                .workflow-steps::before {
+                    display: none;
+                }
+
+                .timeline::before {
+                    left: 20px;
+                }
+
+                .timeline-item,
+                .timeline-item:nth-child(even) {
+                    padding-left: 60px;
+                    padding-right: 0;
+                }
+
+                .timeline-item:nth-child(odd) .timeline-content,
+                .timeline-item:nth-child(even) .timeline-content {
+                    margin: 0;
+                }
+
+                .timeline-dot {
+                    left: 20px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .logo-text {
+                    font-size: 2.5rem;
+                    letter-spacing: 8px;
+                }
+
+                .cover-title {
+                    font-size: 1.8rem;
+                }
+
+                .section-title {
+                    font-size: 1.8rem;
+                }
+            }
+
+            /* DEMONSTRAÇÃO */
+            .demo-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+
+            .demo-card {
+                background: var(--cosmos-white);
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease;
+            }
+
+            .demo-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .demo-card.full-width {
+                grid-column: 1 / -1;
+            }
+
+            .demo-header {
+                background: linear-gradient(
+                    135deg,
+                    var(--cosmos-dark),
+                    var(--cosmos-blue)
+                );
+                color: var(--cosmos-white);
+                padding: 20px 25px;
+            }
+
+            .demo-header h3 {
+                font-size: 1.2rem;
+                font-weight: 600;
+                margin-bottom: 5px;
+            }
+
+            .demo-header p {
+                font-size: 0.9rem;
+                opacity: 0.8;
+            }
+
+            .demo-content {
+                padding: 20px;
+            }
+
+            .demo-screenshot {
+                width: 100%;
+                border-radius: 8px;
+                border: 1px solid #eee;
+                margin-bottom: 15px;
+            }
+
+            .demo-gif {
+                width: 100%;
+                border-radius: 8px;
+                border: 1px solid #eee;
+            }
+
+            .demo-steps {
+                display: flex;
+                gap: 10px;
+                margin-top: 15px;
+            }
+
+            .demo-step {
+                flex: 1;
+                background: var(--cosmos-gray);
+                padding: 12px;
+                border-radius: 8px;
+                text-align: center;
+                font-size: 0.85rem;
+            }
+
+            .demo-step.active {
+                background: var(--cosmos-accent);
+                color: var(--cosmos-white);
+            }
+
+            .demo-step-number {
+                font-weight: 700;
+                font-size: 1.1rem;
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            /* TREINAMENTOS */
+            .training-card {
+                cursor: pointer;
+                position: relative;
+            }
+
+            .training-card::after {
+                content: "→";
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 1.5rem;
+                color: var(--cosmos-accent);
+                opacity: 0;
+                transition: opacity 0.3s;
+            }
+
+            .training-card:hover::after {
+                opacity: 1;
+            }
+
+            /* PRINT STYLES */
+            @media print {
+                .cover {
+                    min-height: auto;
+                    padding: 100px 20px;
+                    page-break-after: always;
+                }
+
+                .section {
+                    page-break-inside: avoid;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- CAPA -->
+        <section class="cover">
+            <div class="logo-container">
+                <div class="logo-text">COSMOS</div>
+                <div class="logo-tagline">
+                    Sempre à frente, desafiando o convencional.
+                </div>
+            </div>
+            <h1 class="cover-title">Material de Apresentação</h1>
+            <p class="cover-subtitle">
+                Sistema Odoo ERP para Gestão Integrada de Operações
+            </p>
+            <div class="cover-date">São Paulo, Setembro 2026</div>
+        </section>
+
+        <!-- SOBRE A COSMOS -->
+        <section class="section section-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Sobre a Cosmos Advisors</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">
+                        Sua parceira em soluções empresariais integradas
+                    </p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-text">
+                        <p>
+                            A <strong>Cosmos Advisors</strong> é uma boutique brasileira
+                            de serviços financeiros e consultoria empresarial, fundada
+                            em 2020 e sediada em São Paulo.
+                        </p>
+                        <p>
+                            Como parceira certificada Odoo, a Cosmos Advisors implementa
+                            e customiza soluções completas para empresas que buscam
+                            <strong>eficiência operacional</strong> e
+                            <strong>gestão integrada</strong>.
+                        </p>
+                        <p>
+                            Com expertise em M&A, Due Diligence e BPO Financeiro, a
+                            Cosmos entrega soluções sob medida para cada necessidade do
+                            seu negócio.
+                        </p>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Módulos Odoo</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Integrado</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">6+</div>
+                            <div class="stat-label">Áreas de Atuação</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">Parceiro</div>
+                            <div class="stat-label">Certificação Odoo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DESAFIOS -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Por que o Odoo?</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">
+                        Empresas que buscam eficiência precisam de integração
+                    </p>
+                </div>
+                <div class="challenges-list">
+                    <div class="challenge-card">
+                        <div class="challenge-icon">📊</div>
+                        <h3 class="challenge-title">Sistemas Desconectados</h3>
+                        <p class="challenge-desc">
+                            Planilhas, WhatsApp, email e sistemas avulsos geram perda de
+                            informação e retrabalho.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">👥</div>
+                        <h3 class="challenge-title">Visão Fragmentada</h3>
+                        <p class="challenge-desc">
+                            Sem um CRM integrado, oportunidades se perdem e o
+                            relacionamento com clientes fica comprometido.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">📁</div>
+                        <h3 class="challenge-title">Controle de Projetos</h3>
+                        <p class="challenge-desc">
+                            Acompanhar entregas, horas e prazos em planilhas é
+                            ineficiente e propenso a erros.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">📋</div>
+                        <h3 class="challenge-title">Processos Manuais</h3>
+                        <p class="challenge-desc">
+                            Tarefas repetitivas como digitação de dados e envio de
+                            emails consomem tempo valioso.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">👥</div>
+                        <h3 class="challenge-title">Gestão de Pessoal</h3>
+                        <p class="challenge-desc">
+                            Folha de pagamento, ponto e gestão de talentos sem
+                            integração geram inconsistências.
+                        </p>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-icon">📄</div>
+                        <h3 class="challenge-title">Fiscalidade Complexa</h3>
+                        <p class="challenge-desc">
+                            Notas fiscais, SPED e obrigações acessórias demandam sistema
+                            especializado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MÓDULOS -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Módulos Odoo</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">
+                        Solução completa para cada área do negócio
+                    </p>
+                </div>
+                <div class="modules-grid">
+                    <div class="module-card">
+                        <div class="module-icon">💼</div>
+                        <h3 class="module-name">CRM & Vendas</h3>
+                        <ul class="module-features">
+                            <li>Gestão de oportunidades</li>
+                            <li>Pipeline de vendas</li>
+                            <li>Geração de propostas</li>
+                            <li>Previsões de receita</li>
+                            <li>Integração com WhatsApp</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">💰</div>
+                        <h3 class="module-name">Contabilidade</h3>
+                        <ul class="module-features">
+                            <li>Plano de contas inteligente</li>
+                            <li>Conciliação bancária</li>
+                            <li>Notas fiscais (NFe, NFS-e)</li>
+                            <li>Relatórios contábeis</li>
+                            <li>SPED fiscal e contábil</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">📊</div>
+                        <h3 class="module-name">Projetos</h3>
+                        <ul class="module-features">
+                            <li>Cronograma de atividades</li>
+                            <li>Controle de horas</li>
+                            <li>Acompanhamento de entregas</li>
+                            <li>Faturamento por projeto</li>
+                            <li>Análise derentabilidade</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">👥</div>
+                        <h3 class="module-name">RH & Folha</h3>
+                        <ul class="module-features">
+                            <li>Admissão digital</li>
+                            <li>Controle de ponto</li>
+                            <li>Folha de pagamento</li>
+                            <li>Gestão de férias</li>
+                            <li>Reembolso e despesas</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">📁</div>
+                        <h3 class="module-name">Documentos</h3>
+                        <ul class="module-features">
+                            <li>Armazenamento seguro</li>
+                            <li>Versionamento</li>
+                            <li>Controle de acesso</li>
+                            <li>Assinatura digital</li>
+                            <li>Integração com módulos</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <div class="module-icon">📈</div>
+                        <h3 class="module-name">Relatórios</h3>
+                        <ul class="module-features">
+                            <li>Dashboards personalizados</li>
+                            <li>KPIs em tempo real</li>
+                            <li>Relatórios customizados</li>
+                            <li>Exportação (PDF, Excel)</li>
+                            <li>Agendamento automático</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEMONSTRAÇÃO -->
+        <section class="section section-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Demonstração ao Vivo</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">Veja o Odoo em ação com dados reais</p>
+                </div>
+
+                <!-- Visão Geral dos Módulos -->
+                <div class="demo-grid">
+                    <!-- CRM Pipeline -->
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>CRM - Pipeline de Vendas</h3>
+                            <p>Gestão de oportunidades e leads</p>
+                        </div>
+                        <div class="demo-content">
+                            <img
+                                src="screenshots/crm_pipeline.png"
+                                alt="CRM Pipeline"
+                                class="demo-screenshot"
+                            />
+                            <div class="demo-steps">
+                                <div class="demo-step active">
+                                    <span class="demo-step-number">1</span>
+                                    Novo Lead
+                                </div>
+                                <div class="demo-step">
+                                    <span class="demo-step-number">2</span>
+                                    Qualificação
+                                </div>
+                                <div class="demo-step">
+                                    <span class="demo-step-number">3</span>
+                                    Proposta
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Helpdesk -->
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>Helpdesk - Suporte ao Cliente</h3>
+                            <p>Gestão de tickets e atendimento</p>
+                        </div>
+                        <div class="demo-content">
+                            <img
+                                src="screenshots/helpdesk.png"
+                                alt="Helpdesk Dashboard"
+                                class="demo-screenshot"
+                            />
+                            <div class="demo-steps">
+                                <div class="demo-step active">
+                                    <span class="demo-step-number">1</span>
+                                    Novo Ticket
+                                </div>
+                                <div class="demo-step">
+                                    <span class="demo-step-number">2</span>
+                                    Triagem
+                                </div>
+                                <div class="demo-step">
+                                    <span class="demo-step-number">3</span>
+                                    Resolução
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Projetos -->
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>Projetos - Kanban</h3>
+                            <p>Acompanhamento de entregas</p>
+                        </div>
+                        <div class="demo-content">
+                            <img
+                                src="screenshots/projects.png"
+                                alt="Projetos Kanban"
+                                class="demo-screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- Faturamento -->
+                    <div class="demo-card">
+                        <div class="demo-header">
+                            <h3>Faturamento - Notas Fiscais</h3>
+                            <p>Emissão e controle de faturas</p>
+                        </div>
+                        <div class="demo-content">
+                            <img
+                                src="screenshots/fatura_confirmada.png"
+                                alt="Fatura Confirmada"
+                                class="demo-screenshot"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fluxo Completo CRM -->
+                <div class="demo-card full-width" style="margin-top: 40px">
+                    <div class="demo-header">
+                        <h3>Fluxo Completo: Criar Lead no CRM</h3>
+                        <p>Do preenchimento ao salvamento - veja em tempo real</p>
+                    </div>
+                    <div class="demo-content">
+                        <img
+                            src="videos/lead_flow.gif"
+                            alt="Fluxo CRM Lead"
+                            class="demo-gif"
+                        />
+                    </div>
+                </div>
+
+                <!-- Fluxo Completo Helpdesk -->
+                <div class="demo-card full-width" style="margin-top: 40px">
+                    <div class="demo-header">
+                        <h3>Fluxo Completo: Criar Ticket no Helpdesk</h3>
+                        <p>Abertura de chamado com descrição e contato</p>
+                    </div>
+                    <div class="demo-content">
+                        <img
+                            src="videos/helpdesk_flow.gif"
+                            alt="Fluxo Helpdesk Ticket"
+                            class="demo-gif"
+                        />
+                    </div>
+                </div>
+
+                <!-- Fluxo Completo Faturamento -->
+                <div class="demo-card full-width" style="margin-top: 40px">
+                    <div class="demo-header">
+                        <h3>Fluxo Completo: Emissão de Nota Fiscal</h3>
+                        <p>Criação, preenchimento e confirmação da fatura</p>
+                    </div>
+                    <div class="demo-content">
+                        <img
+                            src="videos/nota_flow.gif"
+                            alt="Fluxo Faturamento"
+                            class="demo-gif"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLUXO DE TRABALHO -->
+        <section class="section section-white">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Como o Odoo Conecta Tudo</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">
+                        Um único sistema para todas as áreas da empresa
+                    </p>
+                </div>
+                <div class="workflow-steps">
+                    <div class="workflow-step">
+                        <div class="step-number">1</div>
+                        <h4 class="step-title">Novo Lead</h4>
+                        <p class="step-desc">CRM captura oportunidades</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">2</div>
+                        <h4 class="step-title">Projeto</h4>
+                        <p class="step-desc">Acompanha entregas</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">3</div>
+                        <h4 class="step-title">Faturamento</h4>
+                        <p class="step-desc">Emite notas fiscais</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">4</div>
+                        <h4 class="step-title">Financeiro</h4>
+                        <p class="step-desc">Controla recebimentos</p>
+                    </div>
+                    <div class="workflow-step">
+                        <div class="step-number">5</div>
+                        <h4 class="step-title">Relatórios</h4>
+                        <p class="step-desc">Dashboards em tempo real</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CRONOGRAMA -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Cronograma de Entrega</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">Processo ágil e transparente</p>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-week">Semana 1</div>
+                            <h4 class="timeline-title">Diagnóstico</h4>
+                            <p class="timeline-desc">
+                                Levantamento de processos e necessidades específicas.
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-week">Semanas 2-3</div>
+                            <h4 class="timeline-title">Configuração</h4>
+                            <p class="timeline-desc">
+                                Instalação, configuração dos módulos e migração de
+                                dados.
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-week">Semanas 4-5</div>
+                            <h4 class="timeline-title">Personalização</h4>
+                            <p class="timeline-desc">
+                                Adaptação às necessidades, relatórios e workflows.
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-content">
+                            <div class="timeline-week">Semana 6</div>
+                            <h4 class="timeline-title">Go-Live</h4>
+                            <p class="timeline-desc">
+                                Implantação, treinamento e início do suporte contínuo.
+                            </p>
+                        </div>
+                        <div class="timeline-dot"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRÓXIMOS PASSOS -->
+        <section class="section section-dark">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Como Começar</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">
+                        A Cosmos Advisors acompanha você em cada etapa
+                    </p>
+                </div>
+                <div class="next-steps-grid">
+                    <div class="next-step-card">
+                        <div class="next-step-number">01</div>
+                        <h3 class="next-step-title">Diagnóstico Gratuito</h3>
+                        <p class="next-step-desc">
+                            Analisamos seus processos atuais e identificamos
+                            oportunidades de melhoria.
+                        </p>
+                    </div>
+                    <div class="next-step-card">
+                        <div class="next-step-number">02</div>
+                        <h3 class="next-step-title">Demonstração Personalizada</h3>
+                        <p class="next-step-desc">
+                            Apresentamos o Odoo configurado com os módulos relevantes
+                            para sua operação.
+                        </p>
+                    </div>
+                    <div class="next-step-card">
+                        <div class="next-step-number">03</div>
+                        <h3 class="next-step-title">Implementação Ágil</h3>
+                        <p class="next-step-desc">
+                            Implantação com treinamento contínuo e suporte dedicado.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TREINAMENTOS -->
+        <section class="section section-gray">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Treinamentos</h2>
+                    <div class="accent-line"></div>
+                    <p class="section-subtitle">
+                        Aprenda a usar cada módulo do sistema
+                    </p>
+                </div>
+                <div class="next-steps-grid">
+                    <div
+                        class="next-step-card"
+                        style="cursor: pointer"
+                        onclick="window.location.href='treinamentos/01-crm-lead.html'"
+                    >
+                        <div class="next-step-number">💼</div>
+                        <h3 class="next-step-title">CRM: Criar Lead</h3>
+                        <p class="next-step-desc">
+                            Pipeline de vendas e oportunidades.
+                        </p>
+                    </div>
+                    <div
+                        class="next-step-card"
+                        style="cursor: pointer"
+                        onclick="window.location.href='treinamentos/02-helpdesk-ticket.html'"
+                    >
+                        <div class="next-step-number">🎧</div>
+                        <h3 class="next-step-title">Helpdesk: Ticket</h3>
+                        <p class="next-step-desc">Suporte ao cliente e chamados.</p>
+                    </div>
+                    <div
+                        class="next-step-card"
+                        style="cursor: pointer"
+                        onclick="window.location.href='treinamentos/03-faturamento.html'"
+                    >
+                        <div class="next-step-number">💰</div>
+                        <h3 class="next-step-title">Faturamento: Nota</h3>
+                        <p class="next-step-desc">Emissão de notas fiscais.</p>
+                    </div>
+                    <div
+                        class="next-step-card"
+                        style="cursor: pointer"
+                        onclick="window.location.href='treinamentos/04-contatos.html'"
+                    >
+                        <div class="next-step-number">👥</div>
+                        <h3 class="next-step-title">Contatos: Cliente</h3>
+                        <p class="next-step-desc">Cadastro de clientes.</p>
+                    </div>
+                    <div
+                        class="next-step-card"
+                        style="cursor: pointer"
+                        onclick="window.location.href='treinamentos/05-projetos.html'"
+                    >
+                        <div class="next-step-number">📁</div>
+                        <h3 class="next-step-title">Projetos: Entregas</h3>
+                        <p class="next-step-desc">Gestão de projetos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RODAPÉ -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo">COSMOS</div>
+                <div class="footer-contact">
+                    <p>São Paulo, SP - Brasil</p>
+                    <p>contato@cosmosadvisors.com.br</p>
+                    <p>cosmosadvisors.com.br</p>
+                </div>
+                <div class="footer-divider"></div>
+                <p class="footer-copyright">
+                    © 2026 Cosmos Advisors. Parceira Certificada Odoo.
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

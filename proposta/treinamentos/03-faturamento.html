@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Treinamento: Faturamento - Emissão de Nota | Cosmos Advisors</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-nav">
+                        <div class="header-logo">COSMOS</div>
+                        <a href="../proposta-cosmos.html" class="header-back"
+                            >← Voltar ao Material</a
+                        >
+                    </div>
+                    <h1 class="header-title">Faturamento: Emissão de Nota</h1>
+                    <p class="header-subtitle">
+                        Aprenda a criar faturas e controlar recebimentos
+                    </p>
+                    <span class="header-badge">Módulo: Faturamento</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+            <div class="container">
+                <!-- VISÃO GERAL -->
+                <section class="section">
+                    <h2 class="section-title">Visão Geral</h2>
+                    <p class="section-subtitle">O que é uma Fatura e por que emitir</p>
+
+                    <div
+                        class="step"
+                        style="border-left-color: var(--cosmos-light-blue)"
+                    >
+                        <div class="step-content" style="margin-left: 0">
+                            <p class="step-text">
+                                Uma <strong>Fatura</strong> é o documento oficial que
+                                cobra o cliente por um serviço prestado. Ela gera
+                                lançamentos contábeis automaticamente e controla o
+                                recebimento.
+                            </p>
+                            <p class="step-text">
+                                No Odoo, o fluxo é:
+                                <strong>Rascunho → Lançado → Pago</strong>. Cada status
+                                gera impactos contábeis diferentes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flow">
+                        <div class="flow-step active">Rascunho</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Lançado</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Pago</div>
+                    </div>
+                </section>
+
+                <!-- PASSO A PASSO -->
+                <section class="section">
+                    <h2 class="section-title">Passo a Passo</h2>
+                    <p class="section-subtitle">Como emitir uma nota fiscal</p>
+
+                    <!-- PASSO 1 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title">Acessar o Faturamento</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                No menu superior, clique em
+                                <strong>Faturamento</strong>. A lista de faturas mostra
+                                todas as emitidas.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 2 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <h3 class="step-title">Criar Nova Fatura</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Clique em <strong>NOVO</strong>. O formulário de fatura
+                                será aberto.
+                            </p>
+                            <img
+                                src="../screenshots/form_fatura.png"
+                                alt="Formulário de Fatura"
+                                class="screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- PASSO 3 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h3 class="step-title">Preencher Cabeçalho</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">Preencha os dados principais:</p>
+
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Campo</th>
+                                            <th>Obrigatório?</th>
+                                            <th>Descrição</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Cliente *</strong></td>
+                                            <td>Sim</td>
+                                            <td>Quem será cobrado</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Data da Fatura</strong></td>
+                                            <td>Sim</td>
+                                            <td>Data de emissão</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Referência</strong></td>
+                                            <td>Não</td>
+                                            <td>Número do contrato ou pedido</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Condições de Pagamento</strong>
+                                            </td>
+                                            <td>Não</td>
+                                            <td>Prazo (ex: 30 dias)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Por que usar referência?</strong><br />
+                                Ela ajuda o cliente a identificar a fatura no extrato
+                                bancário.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 4 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">4</div>
+                            <h3 class="step-title">Adicionar Linhas de Produto</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Cada linha representa um item/serviço faturado:
+                            </p>
+
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Campo</th>
+                                            <th>Exemplo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Descrição</strong></td>
+                                            <td>Consultoria Financeira - M&A</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Quantidade</strong></td>
+                                            <td>10 (horas)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Preço Unitário</strong></td>
+                                            <td>R$ 5.000,00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Total</strong></td>
+                                            <td>
+                                                R$ 50.000,00 (calculado automaticamente)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Dica:</strong> Cada linha gera um lançamento
+                                contábil separado. Isso facilita a análise de receita
+                                por serviço.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 5 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">5</div>
+                            <h3 class="step-title">Salvar e Confirmar</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">Após preencher tudo:</p>
+                            <ol style="margin-left: 20px; margin-bottom: 15px">
+                                <li><strong>Ctrl+S</strong> → Salva como Rascunho</li>
+                                <li>
+                                    <strong>Confirmar</strong> → Muda para "Lançado"
+                                    (documento fiscal emitido)
+                                </li>
+                                <li>
+                                    <strong>Registrar Pagamento</strong> → Registra o
+                                    recebimento
+                                </li>
+                            </ol>
+                            <img
+                                src="../screenshots/fatura_confirmada.png"
+                                alt="Fatura Confirmada"
+                                class="screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- PASSO 6 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">6</div>
+                            <h3 class="step-title">Registrar Pagamento</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Após a confirmação, o botão
+                                <strong>"Registrar Pagamento"</strong> aparece:
+                            </p>
+                            <ol style="margin-left: 20px; margin-bottom: 15px">
+                                <li>Clique no botão</li>
+                                <li>Selecione a forma de pagamento</li>
+                                <li>Confirme</li>
+                            </ol>
+                            <p class="step-text">
+                                A fatura muda para <strong>"Pago"</strong> e o
+                                lançamento bancário é criado.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- STATUS -->
+                <section class="section">
+                    <h2 class="section-title">Status da Fatura</h2>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Significado</th>
+                                    <th>Ação Disponível</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Rascunho</strong></td>
+                                    <td>Em edição</td>
+                                    <td>Editar, Excluir</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Lançado</strong></td>
+                                    <td>Documento emitido</td>
+                                    <td>Registrar Pagamento</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Pago</strong></td>
+                                    <td>Recebido</td>
+                                    <td>Imprimir, Enviar</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Cancelado</strong></td>
+                                    <td>Anulado</td>
+                                    <td>Nenhuma</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- FLUXO COMPLETO -->
+                <section class="section">
+                    <h2 class="section-title">Fluxo Completo</h2>
+                    <p class="section-subtitle">
+                        Veja em tempo real como emitir uma fatura
+                    </p>
+
+                    <div class="gif-container">
+                        <img src="../videos/nota_flow.gif" alt="Fluxo Faturamento" />
+                        <p class="gif-label">GIF: Criando uma fatura no Odoo</p>
+                    </div>
+                </section>
+
+                <!-- BOAS PRÁTICAS -->
+                <section class="section">
+                    <div class="tips-box">
+                        <h3>✨ Boas Práticas</h3>
+                        <ul>
+                            <li>Preencha a referência para facilitar identificação</li>
+                            <li>Use linhas separadas por serviço</li>
+                            <li>
+                                Confirme rapidamente — rascunhos não geram relatório
+                            </li>
+                            <li>Registre o pagamento para manter fluxo de caixa</li>
+                            <li>
+                                Revise antes de confirmar — depois de Lançado, não pode
+                                editar
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo">COSMOS</div>
+                <p class="footer-text">Parceira Certificada Odoo | São Paulo, SP</p>
+            </div>
+        </footer>
+    </body>
+</html>

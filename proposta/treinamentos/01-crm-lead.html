@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Treinamento: CRM - Criar Lead | Cosmos Advisors</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-nav">
+                        <div class="header-logo">COSMOS</div>
+                        <a href="../proposta-cosmos.html" class="header-back"
+                            >← Voltar ao Material</a
+                        >
+                    </div>
+                    <h1 class="header-title">CRM: Criar Lead</h1>
+                    <p class="header-subtitle">
+                        Aprenda a cadastrar oportunidades no pipeline de vendas
+                    </p>
+                    <span class="header-badge">Módulo: CRM & Vendas</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+            <div class="container">
+                <!-- VISÃO GERAL -->
+                <section class="section">
+                    <h2 class="section-title">Visão Geral</h2>
+                    <p class="section-subtitle">O que é um Lead e por que usá-lo</p>
+
+                    <div
+                        class="step"
+                        style="border-left-color: var(--cosmos-light-blue)"
+                    >
+                        <div class="step-content" style="margin-left: 0">
+                            <p class="step-text">
+                                Um <strong>Lead</strong> é uma oportunidade de negócio
+                                identificada. Pode ser um contato de um site, uma
+                                indicação ou fruto de prospecção ativa.
+                            </p>
+                            <p class="step-text">
+                                No Odoo CRM, os leads ficam organizados em um
+                                <strong>Pipeline</strong> (funil de vendas), onde você
+                                acompanha o progresso de cada oportunidade desde o
+                                primeiro contato até o fechamento.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flow">
+                        <div class="flow-step active">Lead</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Oportunidade</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Proposta</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Fechamento</div>
+                    </div>
+                </section>
+
+                <!-- PASSO A PASSO -->
+                <section class="section">
+                    <h2 class="section-title">Passo a Passo</h2>
+                    <p class="section-subtitle">Como criar um lead no CRM do Odoo</p>
+
+                    <!-- PASSO 1 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title">Acessar o CRM</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                No menu superior, clique em <strong>CRM</strong>. Você
+                                verá o Pipeline com os estágios: Novo, Qualificação,
+                                Proposta, Negociação, Ganho, Perdido.
+                            </p>
+                            <div class="step-tip">
+                                <strong>💡 Por que começar pelo Pipeline?</strong><br />
+                                Ver as oportunidades existentes evita duplicidades e
+                                mostra o status atual das vendas.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 2 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <h3 class="step-title">Clicar em NOVO</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Clique no botão <strong>NOVO</strong> no canto superior
+                                esquerdo. Um formulário rápido será aberto.
+                            </p>
+                            <img
+                                src="../screenshots/form_lead.png"
+                                alt="Formulário de Lead"
+                                class="screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- PASSO 3 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h3 class="step-title">Preencher os Dados</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Preencha as informações principais do lead:
+                            </p>
+
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Campo</th>
+                                            <th>Obrigatório?</th>
+                                            <th>Descrição</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Assunto</strong></td>
+                                            <td>Sim</td>
+                                            <td>Título resumido da oportunidade</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cliente</strong></td>
+                                            <td>Não</td>
+                                            <td>Nome da empresa ou contato</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Valor Estimado</strong></td>
+                                            <td>Não</td>
+                                            <td>Quanto a oportunidade pode render</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Probabilidade</strong></td>
+                                            <td>Não</td>
+                                            <td>Chance de fechar (% emprestimo)</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Responsável</strong></td>
+                                            <td>Não</td>
+                                            <td>Quem vai cuidar da oportunidade</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Tag de Palavra-chave</strong>
+                                            </td>
+                                            <td>Não</td>
+                                            <td>
+                                                Classificação (ex: M&A, Due Diligence)
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Dica:</strong> Use um título descritivo como
+                                "Consultoria M&A - Empresa X" para identificar
+                                rapidamente a oportunidade.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 4 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">4</div>
+                            <h3 class="step-title">Adicionar ao Pipeline</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Clique em <strong>"Adicionar"</strong> para salvar o
+                                lead no estágio <strong>"Novo"</strong> do Pipeline.
+                            </p>
+                            <p class="step-text">
+                                O lead aparecerá como um card no kanban, pronto para ser
+                                movido entre os estágios conforme o andamento.
+                            </p>
+                            <img
+                                src="../screenshots/lead_salvo.png"
+                                alt="Lead Salvo no Pipeline"
+                                class="screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- PASSO 5 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">5</div>
+                            <h3 class="step-title">Mover no Pipeline</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Arraste o card para o próximo estágio conforme o
+                                progresso:
+                            </p>
+
+                            <div class="flow">
+                                <div class="flow-step">Novo</div>
+                                <span class="flow-arrow">→</span>
+                                <div class="flow-step active">Qualificação</div>
+                                <span class="flow-arrow">→</span>
+                                <div class="flow-step">Proposta</div>
+                                <span class="flow-arrow">→</span>
+                                <div class="flow-step">Ganho</div>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Por que mover o card?</strong><br />
+                                Cada movimentação atualiza automaticamente a
+                                probabilidade e gera relatórios de conversão.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FLUXO COMPLETO -->
+                <section class="section">
+                    <h2 class="section-title">Fluxo Completo</h2>
+                    <p class="section-subtitle">
+                        Veja em tempo real como criar um lead
+                    </p>
+
+                    <div class="gif-container">
+                        <img src="../videos/lead_flow.gif" alt="Fluxo CRM Lead" />
+                        <p class="gif-label">GIF: Criando um lead no CRM do Odoo</p>
+                    </div>
+                </section>
+
+                <!-- BOAS PRÁTICAS -->
+                <section class="section">
+                    <div class="tips-box">
+                        <h3>✨ Boas Práticas</h3>
+                        <ul>
+                            <li>
+                                Use títulos descritivos para identificar oportunidades
+                            </li>
+                            <li>Preencha o valor estimado para previsão de receita</li>
+                            <li>Adicione tags para classificar por tipo de serviço</li>
+                            <li>Atualize a probabilidade conforme negocia</li>
+                            <li>Mova o card no pipeline para manter histórico</li>
+                            <li>
+                                Registre anotações no chatter para acompanhar interações
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo">COSMOS</div>
+                <p class="footer-text">Parceira Certificada Odoo | São Paulo, SP</p>
+            </div>
+        </footer>
+    </body>
+</html>

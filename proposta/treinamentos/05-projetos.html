@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Treinamento: Projetos - Gestão de Projetos | Cosmos Advisors</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-nav">
+                        <div class="header-logo">COSMOS</div>
+                        <a href="../proposta-cosmos.html" class="header-back"
+                            >← Voltar ao Material</a
+                        >
+                    </div>
+                    <h1 class="header-title">Projetos: Gestão de Entregas</h1>
+                    <p class="header-subtitle">
+                        Aprenda a acompanhar projetos e tarefas
+                    </p>
+                    <span class="header-badge">Módulo: Projetos</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+            <div class="container">
+                <!-- VISÃO GERAL -->
+                <section class="section">
+                    <h2 class="section-title">Visão Geral</h2>
+                    <p class="section-subtitle">O que é um Projeto no Odoo</p>
+
+                    <div
+                        class="step"
+                        style="border-left-color: var(--cosmos-light-blue)"
+                    >
+                        <div class="step-content" style="margin-left: 0">
+                            <p class="step-text">
+                                O módulo de Projetos do Odoo gerencia
+                                <strong>tarefas, prazos e recursos</strong>. É ideal
+                                para empresas de serviços como a Cosmos Advisors.
+                            </p>
+                            <p class="step-text">
+                                Permite acompanhar progresso, controlar horas
+                                trabalhadas e medir produtividade por projeto.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Estágio</th>
+                                    <th>Significado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>A Fazer</strong></td>
+                                    <td>Projeto planejado, ainda não iniciado</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Em Andamento</strong></td>
+                                    <td>Trabalho em progresso</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Concluído</strong></td>
+                                    <td>Projeto finalizado</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- VISÃO KANBAN -->
+                <section class="section">
+                    <h2 class="section-title">Visão Kanban</h2>
+                    <p class="section-subtitle">Acompanhe projetos como cards</p>
+
+                    <img
+                        src="../screenshots/projects.png"
+                        alt="Projetos Kanban"
+                        class="screenshot"
+                    />
+
+                    <div
+                        class="step"
+                        style="border-left-color: var(--cosmos-light-blue)"
+                    >
+                        <div class="step-content" style="margin-left: 0">
+                            <p class="step-text">Cada card mostra:</p>
+                            <ul style="margin-left: 20px; margin-bottom: 15px">
+                                <li><strong>Nome do Projeto</strong> — Título</li>
+                                <li><strong>Responsável</strong> — Quem lidera</li>
+                                <li><strong>Prazo</strong> — Data de início e fim</li>
+                                <li><strong>Tarefas</strong> — Número de tarefas</li>
+                                <li><strong>Tickets</strong> — Chamados vinculados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PASSO A PASSO -->
+                <section class="section">
+                    <h2 class="section-title">Passo a Passo</h2>
+                    <p class="section-subtitle">Como criar um projeto</p>
+
+                    <!-- PASSO 1 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title">Acessar Projetos</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                No menu superior, clique em <strong>Projeto</strong>. A
+                                visão Kanban mostra os projetos existentes.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 2 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <h3 class="step-title">Criar Novo Projeto</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Clique em <strong>NOVO</strong>. O formulário de novo
+                                projeto será aberto:
+                            </p>
+
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Campo</th>
+                                            <th>Obrigatório?</th>
+                                            <th>Descrição</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Nome *</strong></td>
+                                            <td>Sim</td>
+                                            <td>Título do projeto</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Responsável</strong></td>
+                                            <td>Não</td>
+                                            <td>Gerente do projeto</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cliente</strong></td>
+                                            <td>Não</td>
+                                            <td>Empresa beneficiada</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Data de Início</strong></td>
+                                            <td>Não</td>
+                                            <td>Quando começa</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Data de Fim</strong></td>
+                                            <td>Não</td>
+                                            <td>Quando termina</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Tipo</strong></td>
+                                            <td>Não</td>
+                                            <td>Externo, Interno, Experimental</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Por que definir o tipo?</strong><br />
+                                Tipo Externo é para clientes; Interno para projetos da
+                                própria empresa.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 3 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h3 class="step-title">Criar Tarefas</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Dentro do projeto, crie tarefas com:
+                            </p>
+
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Campo</th>
+                                            <th>Descrição</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Título</strong></td>
+                                            <td>O que precisa ser feito</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Responsável</strong></td>
+                                            <td>Quem vai executar</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Prazo</strong></td>
+                                            <td>Até quando</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>Estimativa de Horas</strong>
+                                            </td>
+                                            <td>Quanto tempo estimado</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Estágio</strong></td>
+                                            <td>A Fazer, Em Andamento, Concluído</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Dica:</strong> Tarefas muito grandes devem
+                                ser divididas em subtarefas para melhor acompanhamento.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 4 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">4</div>
+                            <h3 class="step-title">Acompanhar Progresso</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">O projeto mostra automaticamente:</p>
+                            <ul style="margin-left: 20px; margin-bottom: 15px">
+                                <li>
+                                    <strong>Percentual concluído</strong> — Baseado nas
+                                    tarefas
+                                </li>
+                                <li>
+                                    <strong>Horas trabalhadas</strong> — Lançadas pelos
+                                    responsáveis
+                                </li>
+                                <li>
+                                    <strong>Atrasos</strong> — Tarefas além do prazo
+                                </li>
+                                <li><strong>Anexos</strong> — Documentos do projeto</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- VISÃO GANTT -->
+                <section class="section">
+                    <h2 class="section-title">Visão Gantt</h2>
+                    <p class="section-subtitle">
+                        Gráfico de barras para projetos complexos
+                    </p>
+
+                    <div
+                        class="step"
+                        style="border-left-color: var(--cosmos-light-blue)"
+                    >
+                        <div class="step-content" style="margin-left: 0">
+                            <p class="step-text">A visão Gantt mostra:</p>
+                            <ul style="margin-left: 20px; margin-bottom: 15px">
+                                <li>Linha do tempo do projeto</li>
+                                <li>Tarefas como barras</li>
+                                <li>Sobreposições e dependências</li>
+                                <li>Marcos importantes</li>
+                            </ul>
+                            <div class="step-tip">
+                                <strong>💡 Quando usar?</strong><br />
+                                Para projetos complexos com muitas tarefas
+                                interdependentes.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- INTEGRAÇÃO -->
+                <section class="section">
+                    <h2 class="section-title">Integração com Outros Módulos</h2>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Módulo</th>
+                                    <th>Integração</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Helpdesk</strong></td>
+                                    <td>Tickets podem ser vinculados a projetos</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Faturamento</strong></td>
+                                    <td>Horas trabalhadas geram faturas</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>CRM</strong></td>
+                                    <td>Oportunidades podem virar projetos</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Recursos Humanos</strong></td>
+                                    <td>Atribuição de equipe</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- BOAS PRÁTICAS -->
+                <section class="section">
+                    <div class="tips-box">
+                        <h3>✨ Boas Práticas</h3>
+                        <ul>
+                            <li>Nome claro — o título deve descrever o projeto</li>
+                            <li>Defina responsável — sempre designe um líder</li>
+                            <li>Crie tarefas detalhadas — tarefas grandes confundem</li>
+                            <li>Use prazos reais — prazos apertados geram atrasos</li>
+                            <li>Registre horas — para medir produtividade</li>
+                            <li>Feche tarefas — mantenha o kanban limpo</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo">COSMOS</div>
+                <p class="footer-text">Parceira Certificada Odoo | São Paulo, SP</p>
+            </div>
+        </footer>
+    </body>
+</html>

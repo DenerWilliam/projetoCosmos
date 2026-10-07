@@ -1,0 +1,8 @@
+./oca/helpdesk:
+  - "*"
+./oca/knowledge:
+  - "*"
+./oca/knowledge-markdown:
+  - "*"
+./odoo/custom/src/private:
+  - "*"

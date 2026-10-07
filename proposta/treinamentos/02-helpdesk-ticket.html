@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Treinamento: Helpdesk - Criar Ticket | Cosmos Advisors</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- HEADER -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="header-nav">
+                        <div class="header-logo">COSMOS</div>
+                        <a href="../proposta-cosmos.html" class="header-back"
+                            >← Voltar ao Material</a
+                        >
+                    </div>
+                    <h1 class="header-title">Helpdesk: Criar Ticket</h1>
+                    <p class="header-subtitle">
+                        Aprenda a abrir e gerenciar chamados de suporte
+                    </p>
+                    <span class="header-badge">Módulo: Helpdesk</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- CONTENT -->
+        <main class="content">
+            <div class="container">
+                <!-- VISÃO GERAL -->
+                <section class="section">
+                    <h2 class="section-title">Visão Geral</h2>
+                    <p class="section-subtitle">O que é um Ticket e quando usar</p>
+
+                    <div
+                        class="step"
+                        style="border-left-color: var(--cosmos-light-blue)"
+                    >
+                        <div class="step-content" style="margin-left: 0">
+                            <p class="step-text">
+                                Um <strong>Ticket</strong> é um registro de atendimento
+                                ao cliente. Pode ser uma dúvida, solicitação, problema
+                                ou pedido de suporte.
+                            </p>
+                            <p class="step-text">
+                                O Helpdesk do Odoo permite acompanhar todo o ciclo de
+                                vida do chamado, desde a abertura até a resolução.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flow">
+                        <div class="flow-step active">Novo</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Em Andamento</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Resolvido</div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-step">Fechado</div>
+                    </div>
+                </section>
+
+                <!-- PASSO A PASSO -->
+                <section class="section">
+                    <h2 class="section-title">Passo a Passo</h2>
+                    <p class="section-subtitle">Como criar um ticket no Helpdesk</p>
+
+                    <!-- PASSO 1 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title">Acessar o Helpdesk</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                No menu superior, clique em <strong>Helpdesk</strong>.
+                                Você verá o painel com os tickets existentes.
+                            </p>
+                            <img
+                                src="../screenshots/helpdesk.png"
+                                alt="Helpdesk Dashboard"
+                                class="screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- PASSO 2 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">2</div>
+                            <h3 class="step-title">Criar Novo Ticket</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Clique em <strong>NOVO</strong> para abrir o formulário
+                                de novo ticket.
+                            </p>
+                            <img
+                                src="../screenshots/ticket_filled.png"
+                                alt="Formulário de Ticket"
+                                class="screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- PASSO 3 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">3</div>
+                            <h3 class="step-title">Preencher os Dados</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">Preencha as informações do chamado:</p>
+
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Campo</th>
+                                            <th>Obrigatório?</th>
+                                            <th>Descrição</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Título *</strong></td>
+                                            <td>Sim</td>
+                                            <td>Resumo do problema ou solicitação</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Equipe</strong></td>
+                                            <td>Não</td>
+                                            <td>Equipe responsável pelo atendimento</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Responsável</strong></td>
+                                            <td>Não</td>
+                                            <td>Pessoa que vai atender</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Prioridade</strong></td>
+                                            <td>Não</td>
+                                            <td>Baixa, Normal, Alta, Urgente</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Canal</strong></td>
+                                            <td>Não</td>
+                                            <td>Como o cliente entrou em contato</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cliente</strong></td>
+                                            <td>Não</td>
+                                            <td>Quem está pedindo suporte</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Descrição</strong></td>
+                                            <td>Não</td>
+                                            <td>Detalhes do problema</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Dica:</strong> Um bom título ajuda na
+                                triagem. Ex: "Dúvida sobre integração ERP" ou "Erro ao
+                                gerar relatório".
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PASSO 4 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">4</div>
+                            <h3 class="step-title">Salvar o Ticket</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Pressione <strong>Ctrl+S</strong> ou clique em
+                                <strong>Salvar</strong>. O ticket é criado no estágio
+                                <strong>"Novo"</strong>.
+                            </p>
+                            <p class="step-text">
+                                O número do ticket é gerado automaticamente (ex:
+                                HT00010).
+                            </p>
+                            <img
+                                src="../screenshots/ticket_saved.png"
+                                alt="Ticket Salvo"
+                                class="screenshot"
+                            />
+                        </div>
+                    </div>
+
+                    <!-- PASSO 5 -->
+                    <div class="step">
+                        <div class="step-header">
+                            <div class="step-number">5</div>
+                            <h3 class="step-title">Acompanhar e Resolver</h3>
+                        </div>
+                        <div class="step-content">
+                            <p class="step-text">
+                                Mova o ticket entre os estágios conforme o atendimento:
+                            </p>
+
+                            <div class="flow">
+                                <div class="flow-step">Novo</div>
+                                <span class="flow-arrow">→</span>
+                                <div class="flow-step active">Em Andamento</div>
+                                <span class="flow-arrow">→</span>
+                                <div class="flow-step">Resolvido</div>
+                            </div>
+
+                            <div class="step-tip">
+                                <strong>💡 Comunicação:</strong> Use o chatter (área de
+                                comentários) para registrar informações e notificar o
+                                cliente.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- FLUXO COMPLETO -->
+                <section class="section">
+                    <h2 class="section-title">Fluxo Completo</h2>
+                    <p class="section-subtitle">
+                        Veja em tempo real como criar um ticket
+                    </p>
+
+                    <div class="gif-container">
+                        <img
+                            src="../videos/helpdesk_flow.gif"
+                            alt="Fluxo Helpdesk Ticket"
+                        />
+                        <p class="gif-label">
+                            GIF: Criando um ticket no Helpdesk do Odoo
+                        </p>
+                    </div>
+                </section>
+
+                <!-- BOAS PRÁTICAS -->
+                <section class="section">
+                    <div class="tips-box">
+                        <h3>✨ Boas Práticas</h3>
+                        <ul>
+                            <li>Use títulos claros e descritivos</li>
+                            <li>Defina a prioridade corretamente</li>
+                            <li>Registre todas as interações no chatter</li>
+                            <li>Resolva rapidamente para manter métricas</li>
+                            <li>Use tags para classificar tipos de chamado</li>
+                            <li>Vincule o ticket ao projeto quando aplicável</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-logo">COSMOS</div>
+                <p class="footer-text">Parceira Certificada Odoo | São Paulo, SP</p>
+            </div>
+        </footer>
+    </body>
+</html>

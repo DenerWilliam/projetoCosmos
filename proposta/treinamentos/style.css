@@ -1,0 +1,367 @@
+:root {
+    --cosmos-dark: #0a1628;
+    --cosmos-blue: #1e3a5f;
+    --cosmos-accent: #e91e63;
+    --cosmos-light-blue: #42a5f5;
+    --cosmos-white: #ffffff;
+    --cosmos-gray: #f5f7fa;
+    --cosmos-text: #333333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--cosmos-text);
+    line-height: 1.6;
+    background: var(--cosmos-gray);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* HEADER */
+.header {
+    background: linear-gradient(135deg, var(--cosmos-dark) 0%, var(--cosmos-blue) 100%);
+    color: var(--cosmos-white);
+    padding: 40px 0;
+    position: relative;
+}
+
+.header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(233, 30, 99, 0.1) 0%, transparent 50%);
+}
+
+.header-content {
+    position: relative;
+    z-index: 1;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+}
+
+.header-back {
+    color: var(--cosmos-white);
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.header-back:hover {
+    opacity: 1;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.header-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    font-weight: 300;
+}
+
+.header-badge {
+    display: inline-block;
+    background: var(--cosmos-accent);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+/* CONTENT */
+.content {
+    padding: 60px 0;
+}
+
+/* SECTION */
+.section {
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--cosmos-dark);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--cosmos-accent);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 25px;
+}
+
+/* STEPS */
+.step {
+    background: var(--cosmos-white);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--cosmos-accent);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background: var(--cosmos-accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--cosmos-white);
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.step-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cosmos-dark);
+}
+
+.step-content {
+    margin-left: 70px;
+}
+
+.step-text {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.step-tip {
+    background: rgba(66, 165, 245, 0.1);
+    border-left: 3px solid var(--cosmos-light-blue);
+    padding: 15px;
+    border-radius: 0 8px 8px 0;
+    margin: 15px 0;
+    font-size: 0.95rem;
+}
+
+.step-tip strong {
+    color: var(--cosmos-light-blue);
+}
+
+/* IMAGES */
+.screenshot {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+}
+
+.gif-container {
+    background: var(--cosmos-white);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 30px 0;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    text-align: center;
+}
+
+.gif-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.gif-label {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* TABLE */
+.table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--cosmos-white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+th {
+    background: var(--cosmos-dark);
+    color: var(--cosmos-white);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: var(--cosmos-gray);
+}
+
+/* TIPS BOX */
+.tips-box {
+    background: linear-gradient(135deg, var(--cosmos-dark), var(--cosmos-blue));
+    color: var(--cosmos-white);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 40px 0;
+}
+
+.tips-box h3 {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tips-box ul {
+    list-style: none;
+}
+
+.tips-box li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.tips-box li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--cosmos-accent);
+    font-weight: 700;
+}
+
+/* FLOW */
+.flow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 30px 0;
+}
+
+.flow-step {
+    background: var(--cosmos-white);
+    padding: 15px 20px;
+    border-radius: 8px;
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.flow-step.active {
+    background: var(--cosmos-accent);
+    color: var(--cosmos-white);
+}
+
+.flow-arrow {
+    font-size: 1.5rem;
+    color: var(--cosmos-accent);
+}
+
+/* FOOTER */
+.footer {
+    background: var(--cosmos-dark);
+    color: var(--cosmos-white);
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 8px;
+    margin-bottom: 15px;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-title {
+        font-size: 1.8rem;
+    }
+
+    .step-content {
+        margin-left: 0;
+    }
+
+    .step-number {
+        margin-right: 15px;
+    }
+
+    .flow {
+        flex-direction: column;
+    }
+
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+}
+
+/* PRINT */
+@media print {
+    .header {
+        padding: 30px 0;
+    }
+
+    .step {
+        break-inside: avoid;
+    }
+}

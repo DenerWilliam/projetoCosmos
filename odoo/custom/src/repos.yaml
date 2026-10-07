@@ -1,0 +1,26 @@
+# See https://github.com/Tecnativa/doodba#optodoocustomsrcreposyaml
+./odoo:
+  defaults:
+    depth: 1
+  remotes:
+    ocb: https://github.com/OCA/OCB.git
+    odoo: https://github.com/odoo/odoo.git
+  target: ocb 16.0
+  merges:
+    - ocb 16.0
+./oca/helpdesk:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/helpdesk.git
+  target: oca 16.0
+  merges:
+    - oca 16.0
+./oca/knowledge:
+  defaults:
+    depth: 1
+  remotes:
+    oca: https://github.com/OCA/knowledge.git
+  target: oca 16.0
+  merges:
+    - oca 16.0

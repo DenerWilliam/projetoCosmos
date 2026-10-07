@@ -1,0 +1,24 @@
+Reinitialized existing Git repository in /home/dener/Documentos/Escodoo/projetoCosmos/.git/
+pre-commit installed at .git/hooks/pre-commit
+Your branch is up to date with 'origin/16.0'.
+Your branch is up to date with 'origin/16.0'.
+Reinitialized existing Git repository in /home/dener/Documentos/Escodoo/projetoCosmos/.git/
+pre-commit installed at .git/hooks/pre-commit
+Your branch is up to date with 'origin/16.0'.
+Your branch is up to date with 'origin/16.0'.
+Reinitialized existing Git repository in /home/dener/Documentos/Escodoo/projetoCosmos/.git/
+pre-commit installed at .git/hooks/pre-commit
+Your branch is up to date with 'origin/16.0'.
+Your branch is up to date with 'origin/16.0'.
+Removing addons/OCA/
+Reinitialized existing Git repository in /home/dener/Documentos/Escodoo/projetoCosmos/.git/
+pre-commit installed at .git/hooks/pre-commit
+Removing addons/OCA/
+Reinitialized existing Git repository in /home/dener/Documentos/Escodoo/projetoCosmos/.git/
+pre-commit installed at .git/hooks/pre-commit
+Your branch is up to date with 'origin/16.0'.
+Your branch is up to date with 'origin/16.0'.
+Reinitialized existing Git repository in /home/dener/Documentos/Escodoo/projetoCosmos/.git/
+pre-commit installed at .git/hooks/pre-commit
+Your branch is up to date with 'origin/16.0'.
+Your branch is up to date with 'origin/16.0'.

@@ -1,0 +1,118 @@
+/* ============================================
+   COSMOS ADVISORS - Backend Theme
+   Cores: #0A1628 (azul escuro) / #E91E63 (rosa)
+   ============================================ */
+
+/* Top Navigation Bar */
+.o_main_navbar {
+    background-color: #0a1628 !important;
+}
+
+.o_main_navbar .navbar-brand,
+.o_main_navbar .oe_topbar_name {
+    color: #ffffff !important;
+}
+
+/* Menu Items */
+.o_navbar_menu li a {
+    color: #ffffff !important;
+}
+
+.o_navbar_menu li a:hover {
+    color: #e91e63 !important;
+}
+
+/* Sidebar */
+.o_web_client > .o_main_navbar + .o-navbar + .o_content_wrapper > .o_cp_view {
+    background-color: #0a1628 !important;
+}
+
+/* Primary Buttons */
+.btn-primary {
+    background-color: #e91e63 !important;
+    border-color: #e91e63 !important;
+    color: #ffffff !important;
+}
+
+.btn-primary:hover {
+    background-color: #c2185b !important;
+    border-color: #c2185b !important;
+}
+
+/* Links */
+a {
+    color: #e91e63 !important;
+}
+
+a:hover {
+    color: #c2185b !important;
+}
+
+/* Breadcrumb */
+.o_breadcrumb {
+    background-color: #f5f7fa !important;
+}
+
+/* Header */
+.o_cp_controller {
+    background-color: #ffffff !important;
+}
+
+/* Sidebar Menu */
+.o_web_client .o_action_manager .o_cp_action_menus {
+    background-color: #0a1628 !important;
+}
+
+/* Kanban View Header */
+.o_kanban_record .o_kanban_record_top {
+    background-color: #0a1628 !important;
+}
+
+/* Form View Statusbar */
+.o_statusbar_status .o_statusbar_button_active {
+    background-color: #e91e63 !important;
+}
+
+/* Checkbox */
+.o-checkbox:checked + label::after {
+    background-color: #e91e63 !important;
+    border-color: #e91e63 !important;
+}
+
+/* Switch Input */
+.o_switch_input:checked + .o_switch_label::after {
+    background-color: #e91e63 !important;
+}
+
+/* Progress Bar */
+.progress-bar {
+    background-color: #e91e63 !important;
+}
+
+/* Selected Items */
+.o_list_view tbody tr.o_selected_row {
+    background-color: rgba(233, 30, 99, 0.1) !important;
+}
+
+/* Dropdown Menu Active */
+.dropdown-menu > li.active > a {
+    background-color: #e91e63 !important;
+}
+
+/* Tab Navigation */
+.nav-tabs > li.active > a {
+    border-bottom-color: #e91e63 !important;
+}
+
+/* Modal Header */
+.modal-header {
+    background-color: #0a1628 !important;
+    color: #ffffff !important;
+}
+
+/* Alert Boxes */
+.alert-info {
+    background-color: rgba(10, 22, 40, 0.1) !important;
+    border-color: #0a1628 !important;
+    color: #0a1628 !important;
+}
